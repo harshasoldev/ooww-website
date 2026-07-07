@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$OOWW - The Ultimate Hybrid Meme Coin</title>
+  <meta name="description" content="$OOWW: Half Shiba. Half Hippo. All Legend. The first hybrid creature meme coin." />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <meta property="og:title" content="$OOWW - The Ultimate Hybrid Meme Coin" />
+  <meta property="og:description" content="Half Shiba. Half Hippo. All Legend. The first hybrid creature meme coin on Solana." />
+  <meta property="og:image" content="logo.svg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: #f5f0e8;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    ::selection { background: #e8922e; color: #0a0a0f; }
+    
+    /* === SCROLLBAR === */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0f; }
+    ::-webkit-scrollbar-thumb { background: #e8922e; border-radius: 4px; }
+
+    /* === TYPOGRAPHY === */
+    h1, h2, h3, .heading { font-family: 'Archivo Black', sans-serif; }
+    h1 { font-size: clamp(3rem, 10vw, 8rem); text-transform: uppercase; line-height: 0.9; }
+    h2 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.8rem); }
+    .text-gradient {
+      background: linear-gradient(135deg, #e8922e 0%, #ff6b35 40%, #d4a373 70%, #e8922e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-purple { color: #7c5cbf; }
+    .text-orange { color: #e8922e; }
+
+    /* === NAV === */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.2rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(20px);
+      padding: 0.8rem 2rem;
+      border-bottom: 1px solid rgba(232, 146, 46, 0.15);
+    }
+    .nav-logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.5rem;
+      color: #e8922e;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: #f5f0e8; text-decoration: none; font-size: 0.85rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: #e8922e; transition: width 0.3s;
+    }
+    .nav-links a:hover { color: #e8922e; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: linear-gradient(135deg, #e8922e, #ff6b35);
+      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 50px;
+      font-weight: 800 !important; font-size: 0.8rem !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .mobile-menu-btn { display: none; background: none; border: none; color: #f5f0e8; font-size: 1.5rem; cursor: pointer; }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,15,0.3) 0%,
+        rgba(10,10,15,0.6) 50%,
+        rgba(10,10,15,0.95) 100%
+      );
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 900px; padding: 2rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,146,46,0.15);
+      border: 1px solid rgba(232,146,46,0.3);
+      padding: 0.4rem 1.2rem; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 1.5rem;
+      color: #e8922e;
+      animation: fadeInUp 0.8s ease;
+    }
+    .hero h1 { animation: fadeInUp 0.8s ease 0.1s both; }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: rgba(245,240,232,0.7);
+      margin: 1.5rem auto 2rem;
+      max-width: 600px;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.3s both;
+    }
+    .btn-primary, .btn-secondary {
+      padding: 0.9rem 2rem; border-radius: 50px; font-weight: 700;
+      font-size: 0.95rem; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 0.05em; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #e8922e, #ff6b35);
+      color: #0a0a0f; border: none;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,146,46,0.4); }
+    .btn-secondary {
+      background: transparent; color: #f5f0e8;
+      border: 2px solid rgba(245,240,232,0.3);
+    }
+    .btn-secondary:hover { border-color: #e8922e; color: #e8922e; transform: translateY(-2px); }
+
+    .scroll-indicator {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; animation: bounce 2s infinite;
+      color: rgba(245,240,232,0.4); font-size: 1.2rem;
+    }
+
+    /* === TICKER BAR === */
+    .ticker-wrap {
+      background: rgba(232,146,46,0.08);
+      border-top: 1px solid rgba(232,146,46,0.15);
+      border-bottom: 1px solid rgba(232,146,46,0.15);
+      overflow: hidden; padding: 0.8rem 0;
+    }
+    .ticker {
+      display: flex; gap: 3rem; white-space: nowrap;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker span {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem; color: #e8922e;
+    }
+    .ticker span em { font-style: normal; color: rgba(245,240,232,0.3); margin: 0 0.5rem; }
+
+    /* === SECTION COMMON === */
+    section { padding: 6rem 2rem; position: relative; }
+    .section-container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: #e8922e; margin-bottom: 0.5rem;
+    }
+    .section-title { margin-bottom: 1rem; }
+    .section-desc {
+      color: rgba(245,240,232,0.6);
+      max-width: 600px; margin-bottom: 3rem;
+      font-size: 1.05rem;
+    }
+
+    /* === ABOUT === */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .about-video-wrap {
+      position: relative; border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(232,146,46,0.2);
+    }
+    .about-video-wrap video {
+      width: 100%; display: block;
+    }
+    .about-video-wrap::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, transparent 50%, rgba(232,146,46,0.1));
+      pointer-events: none;
+    }
+    .about-text h3 { margin-bottom: 1rem; }
+    .about-text p { color: rgba(245,240,232,0.65); margin-bottom: 1.2rem; font-size: 0.95rem; }
+    .about-traits {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;
+    }
+    .trait {
+      background: rgba(232,146,46,0.1); border: 1px solid rgba(232,146,46,0.2);
+      padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 600; color: #e8922e;
+    }
+
+    /* === TOKENOMICS === */
+    .tokenomics {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f0d12 100%);
+    }
+    .token-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .token-card {
+      background: rgba(245,240,232,0.03);
+      border: 1px solid rgba(245,240,232,0.08);
+      border-radius: 16px; padding: 1.8rem; text-align: center;
+      transition: all 0.3s;
+    }
+    .token-card:hover {
+      border-color: rgba(232,146,46,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(232,146,46,0.08);
+    }
+    .token-card .icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .token-card .value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.8rem; color: #e8922e;
+    }
+    .token-card .label { color: rgba(245,240,232,0.5); font-size: 0.85rem; margin-top: 0.3rem; }
+
+    /* === ROADMAP === */
+    .roadmap {
+      background: linear-gradient(180deg, #0f0d12 0%, #0a0a0f 100%);
+    }
+    .roadmap-track {
+      position: relative;
+    }
+    .roadmap-track::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(180deg, #e8922e, #7c5cbf);
+      transform: translateX(-50%);
+    }
+    .roadmap-item {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      position: relative; margin-bottom: 3rem;
+    }
+    .roadmap-item:nth-child(even) .roadmap-content { grid-column: 1; }
+    .roadmap-item:nth-child(even) .roadmap-dot-area { grid-column: 2; }
+    .roadmap-item:nth-child(odd) .roadmap-content { grid-column: 2; grid-row: 1; }
+    .roadmap-item:nth-child(odd) .roadmap-dot-area { grid-column: 1; grid-row: 1; text-align: right; }
+    .roadmap-dot-area { display: flex; align-items: center; justify-content: center; position: relative; }
+    .roadmap-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #e8922e; border: 4px solid #0a0a0f;
+      z-index: 2; box-shadow: 0 0 20px rgba(232,146,46,0.3);
+    }
+    .roadmap-phase {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #e8922e; margin-bottom: 0.5rem;
+    }
+    .roadmap-content h3 { margin-bottom: 0.5rem; }
+    .roadmap-content ul { list-style: none; }
+    .roadmap-content ul li {
+      color: rgba(245,240,232,0.6); font-size: 0.9rem; padding: 0.3rem 0;
+      position: relative; padding-left: 1.2rem;
+    }
+    .roadmap-content ul li::before {
+      content: '›'; position: absolute; left: 0; color: #e8922e;
+      font-weight: 700; font-size: 1.2rem;
+    }
+    .roadmap-content ul li.done { color: rgba(245,240,232,0.4); }
+    .roadmap-content ul li.done::before { content: '✓'; }
+
+    /* === HOW TO BUY === */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .step-card {
+      background: rgba(245,240,232,0.02);
+      border: 1px solid rgba(245,240,232,0.06);
+      border-radius: 16px; padding: 2rem;
+      position: relative; transition: all 0.3s;
+    }
+    .step-card:hover { border-color: rgba(232,146,46,0.2); transform: translateY(-3px); }
+    .step-number {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 3rem; color: rgba(232,146,46,0.1);
+      position: absolute; top: 1rem; right: 1.5rem;
+      line-height: 1;
+    }
+    .step-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .step-card p { color: rgba(245,240,232,0.55); font-size: 0.9rem; }
+
+    /* === TEAM === */
+    .team-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem; text-align: center;
+    }
+    .team-member {
+      background: rgba(245,240,232,0.02);
+      border: 1px solid rgba(245,240,232,0.06);
+      border-radius: 16px; padding: 1.5rem;
+      transition: all 0.3s;
+    }
+    .team-member:hover { border-color: rgba(232,146,46,0.2); }
+    .team-avatar {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: linear-gradient(135deg, #e8922e, #7c5cbf);
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-family: 'Archivo Black', sans-serif;
+    }
+    .team-member h4 { font-size: 0.95rem; }
+    .team-member p { color: rgba(245,240,232,0.4); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* === COMMUNITY === */
+    .community {
+      text-align: center;
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f0d12 100%);
+    }
+    .community .section-desc { margin-left: auto; margin-right: auto; }
+    .social-links {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .social-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.8rem 1.5rem; border-radius: 50px;
+      background: rgba(245,240,232,0.04);
+      border: 1px solid rgba(245,240,232,0.1);
+      color: #f5f0e8; text-decoration: none; font-weight: 600;
+      font-size: 0.9rem; transition: all 0.3s;
+    }
+    .social-link:hover {
+      background: rgba(232,146,46,0.1);
+      border-color: #e8922e;
+      color: #e8922e;
+      transform: translateY(-2px);
+    }
+    .social-link .icon { font-size: 1.3rem; }
+
+    /* === MEME GALLERY === */
+    .meme-gallery {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 2rem;
+    }
+    .meme-gallery video, .meme-gallery img {
+      width: 100%; border-radius: 12px;
+      border: 1px solid rgba(245,240,232,0.06);
+      transition: all 0.3s;
+    }
+    .meme-gallery video:hover, .meme-gallery img:hover {
+      border-color: rgba(232,146,46,0.3);
+      transform: scale(1.02);
+    }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center; padding: 3rem 2rem;
+      border-top: 1px solid rgba(245,240,232,0.06);
+      color: rgba(245,240,232,0.3); font-size: 0.8rem;
+    }
+    footer a { color: #e8922e; text-decoration: none; }
+    footer .disclaimer {
+      max-width: 600px; margin: 1rem auto 0;
+      font-size: 0.7rem; color: rgba(245,240,232,0.15);
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1; transform: translateY(0);
+    }
+    .glow-pulse { animation: pulse 3s infinite; }
+
+    /* === FLOATING COINS === */
+    .float-coins {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .coin-emoji {
+      position: absolute; font-size: 1.5rem; opacity: 0.04;
+      animation: floatCoin linear infinite;
+    }
+    @keyframes floatCoin {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.04; }
+      90% { opacity: 0.04; }
+      100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1.5rem; border-bottom: 1px solid rgba(232,146,46,0.15); gap: 1.2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .roadmap-track::before { left: 20px; }
+      .roadmap-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .roadmap-item:nth-child(even) .roadmap-content,
+      .roadmap-item:nth-child(odd) .roadmap-content { grid-column: 1; }
+      .roadmap-item:nth-child(even) .roadmap-dot-area,
+      .roadmap-item:nth-child(odd) .roadmap-dot-area { display: none; }
+      .roadmap-item { padding-left: 2rem; }
+      .roadmap-item::before {
+        content: ''; position: absolute; left: 12px; top: 8px;
+        width: 16px; height: 16px; border-radius: 50%;
+        background: #e8922e; border: 3px solid #0a0a0f;
+        z-index: 2;
+      }
+      section { padding: 4rem 1.2rem; }
+      .token-cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.5rem; }
+      .token-cards { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas a { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Coins Background -->
+  <div class="float-coins" id="floatCoins"></div>
+
+  <!-- === NAV === -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 400 400" width="32" height="32" style="vertical-align:middle;margin-right:8px">
+        <defs>
+          <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#e8922e"/>
+            <stop offset="100%" style="stop-color:#ff6b35"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="200" cy="210" rx="65" ry="60" fill="#e8922e"/>
+        <ellipse cx="170" cy="218" rx="28" ry="32" fill="#f5f0e8"/>
+        <ellipse cx="230" cy="218" rx="28" ry="32" fill="#f5f0e8"/>
+        <ellipse cx="200" cy="238" rx="30" ry="22" fill="#f5f0e8"/>
+        <ellipse cx="180" cy="198" rx="7" ry="9" fill="#1a1a2e"/>
+        <ellipse cx="220" cy="198" rx="7" ry="9" fill="#1a1a2e"/>
+        <ellipse cx="200" cy="228" rx="7" ry="4" fill="#2a1a1a"/>
+        <ellipse cx="200" cy="300" rx="80" ry="42" fill="#6b5a7a"/>
+        <ellipse cx="350" cy="200" rx="30" ry="55" fill="#e8922e" transform="rotate(15 350 200)"/>
+      </svg>
+      $OOWW
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#howtobuy">How to Buy</a>
+      <a href="#community" class="nav-cta">Join Now</a>
+    </div>
+    <button class="mobile-menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- === HERO === -->
+  <section class="hero" id="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="videos/ooww-charge-poster.jpg">
+      <source src="videos/ooww-charge-web.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🐕 + 🦛 + 🐿️ = 🔥</div>
+      <h1>OOWW<br><span class="text-gradient">Power Fusion</span></h1>
+      <p class="hero-sub">
+        Half Shiba. Half Hippo. All Legend. The first hybrid creature meme coin 
+        taking over the Solana jungle. Ready to OOWW?
+      </p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">🐋 Buy $OOWW</a>
+        <a href="#" class="btn-secondary">📊 Chart</a>
+        <a href="#about" class="btn-secondary">👇 Learn More</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">⌄</div>
+  </section>
+
+  <!-- === TICKER === -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>$OOWW <em>✦</em> OOWW POWER FUSION <em>✦</em> SHIBA × HIPPO × SQUIRREL <em>✦</em> $OOWW TO THE MOON <em>✦</em> HYBRID SEASON <em>✦</em></span>
+      <span>$OOWW <em>✦</em> OOWW POWER FUSION <em>✦</em> SHIBA × HIPPO × SQUIRREL <em>✦</em> $OOWW TO THE MOON <em>✦</em> HYBRID SEASON <em>✦</em></span>
+    </div>
+  </div>
+
+  <!-- === ABOUT === -->
+  <section id="about">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-video-wrap">
+          <video autoplay muted loop playsinline poster="videos/ooww-stand-poster.jpg">
+            <source src="videos/ooww-stand-web.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="about-text">
+          <div class="section-label">🧬 The Legend</div>
+          <h2 class="section-title">What is <span class="text-gradient">OOWW</span>?</h2>
+          <p>
+            Deep in the Solana jungle, a freak genetic experiment fused the DNA of 
+            three unstoppable forces of nature: the <strong>cunning of a Shiba Inu</strong>, 
+            the <strong>raw power of a Hippopotamus</strong>, and the <strong>balance of a Squirrel</strong>.
+          </p>
+          <p>
+            The result? <strong>$OOWW</strong> — the internet's first hybrid creature meme coin. 
+            Part cute, part terrifying, 100% legendary. We're not just a coin; we're a 
+            movement. A hybrid revolution.
+          </p>
+          <p>
+            With a max supply of <strong>1 Billion $OOWW</strong> and zero taxes, 
+            this hybrid isn't stopping until it's the apex predator of crypto.
+          </p>
+          <div class="about-traits">
+            <span class="trait">🐕 50% Shiba</span>
+            <span class="trait">🦛 40% Hippo</span>
+            <span class="trait">🐿️ 10% Squirrel</span>
+            <span class="trait">🔥 100% Legend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === TOKENOMICS === -->
+  <section id="tokenomics" class="tokenomics">
+    <div class="section-container">
+      <div class="section-label">📊 Tokenomics</div>
+      <h2 class="section-title">$OOWW <span class="text-gradient">Supply</span></h2>
+      <p class="section-desc">
+        Fair launch. No presale. No team allocation. Just pure hybrid energy.
+      </p>
+      <div class="token-cards">
+        <div class="token-card">
+          <div class="icon">💰</div>
+          <div class="value">1B</div>
+          <div class="label">Total Supply</div>
+        </div>
+        <div class="token-card">
+          <div class="icon">🔥</div>
+          <div class="value">0%</div>
+          <div class="label">Buy/Sell Tax</div>
+        </div>
+        <div class="token-card">
+          <div class="icon">🔒</div>
+          <div class="value">100%</div>
+          <div class="label">Liquidity Locked</div>
+        </div>
+        <div class="token-card">
+          <div class="icon">🗳️</div>
+          <div class="value">100%</div>
+          <div class="label">Community Owned</div>
+        </div>
+        <div class="token-card">
+          <div class="icon">🚫</div>
+          <div class="value">0</div>
+          <div class="label">Team Tokens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === MEME GALLERY === -->
+  <section id="gallery">
+    <div class="section-container">
+      <div class="section-label">🎬 OOWW in Action</div>
+      <h2 class="section-title">The <span class="text-gradient">Hybrid</span> Unleashed</h2>
+      <p class="section-desc">Watch the legend in its natural habitat.</p>
+      <div class="meme-gallery">
+        <video autoplay muted loop playsinline poster="videos/ooww-leap-poster.jpg">
+          <source src="videos/ooww-leap-web.mp4" type="video/mp4" />
+        </video>
+        <video autoplay muted loop playsinline poster="videos/ooww-pack-poster.jpg">
+          <source src="videos/ooww-pack-web.mp4" type="video/mp4" />
+        </video>
+        <video autoplay muted loop playsinline poster="videos/ooww-smug-poster.jpg">
+          <source src="videos/ooww-smug-web.mp4" type="video/mp4" />
+        </video>
+        <video autoplay muted loop playsinline poster="videos/ooww-stride-poster.jpg">
+          <source src="videos/ooww-stride-web.mp4" type="video/mp4" />
+        </video>
+        <video autoplay muted loop playsinline poster="videos/ooww-walk-poster.jpg">
+          <source src="videos/ooww-walk-web.mp4" type="video/mp4" />
+        </video>
+        <video autoplay muted loop playsinline poster="videos/ooww-charge-poster.jpg">
+          <source src="videos/ooww-charge-web.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- === ROADMAP === -->
+  <section id="roadmap" class="roadmap">
+    <div class="section-container">
+      <div class="section-label">🗺️ The Hybrid Plan</div>
+      <h2 class="section-title">OOWW <span class="text-gradient">Roadmap</span></h2>
+      <p class="section-desc">From lab experiment to apex predator. Here's the plan.</p>
+      <div class="roadmap-track">
+        <div class="roadmap-item">
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 1 — The Mutation 🧬</div>
+            <h3>Genesis</h3>
+            <ul>
+              <li class="done">✅ OOWW creature created</li>
+              <li class="done">✅ Website & brand launch</li>
+              <li>🚀 Fair launch on Solana</li>
+              <li>🔥 Initial liquidity pool</li>
+              <li>🐦 Twitter / Telegram community</li>
+            </ul>
+          </div>
+          <div class="roadmap-dot-area"><div class="roadmap-dot"></div></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot-area"><div class="roadmap-dot"></div></div>
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 2 — Evolution 🦾</div>
+            <h3>Growth</h3>
+            <ul>
+              <li>📈 DexScreener / CoinGecko listing</li>
+              <li>🎨 Meme contest & influencer collabs</li>
+              <li>🖼️ NFT collection — Hybrid Genesis</li>
+              <li>🤝 CEX listing applications</li>
+              <li>🌍 Community vote on next hybrid</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-content">
+            <div class="roadmap-phase">Phase 3 — Dominance 🦛</div>
+            <h3>Apex Predator</h3>
+            <ul>
+              <li>🏛️ DAO launch — Hybrid Council</li>
+              <li>🎮 Play-to-earn hybrid battle game</li>
+              <li>🧬 OOWW merchandise line</li>
+              <li>💎 Major CEX listings</li>
+              <li>🪐 Multi-chain expansion</li>
+            </ul>
+          </div>
+          <div class="roadmap-dot-area"><div class="roadmap-dot"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === HOW TO BUY === -->
+  <section id="howtobuy">
+    <div class="section-container">
+      <div class="section-label">🦛 How to Buy</div>
+      <h2 class="section-title">Get Your <span class="text-gradient">$OOWW</span></h2>
+      <p class="section-desc">Ready to join the hybrid revolution? Follow these steps.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>💳 Get a Wallet</h3>
+          <p>Download Phantom or Solflare wallet on your phone or browser.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>⛽ Buy SOL</h3>
+          <p>Purchase SOL from any exchange (Binance, Coinbase, etc.) and send it to your wallet.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>🔄 Swap for $OOWW</h3>
+          <p>Go to Raydium or Jupiter, paste the $OOWW contract address, and swap your SOL.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3>🐋 HODL & OOWW</h3>
+          <p>Welcome to the Hybrid Pack. Hold tight, spread the memes, and enjoy the ride!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === TEAM === -->
+  <section id="team">
+    <div class="section-container">
+      <div class="section-label">👥 The Hybrid Council</div>
+      <h2 class="section-title">Meet the <span class="text-gradient">Pack</span></h2>
+      <p class="section-desc">An anonymous collective of hybrid believers.</p>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-avatar">🦛</div>
+          <h4>Hippo Dev</h4>
+          <p>Lead Builder</p>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">🐕</div>
+          <h4>Shiba Strategist</h4>
+          <p>Marketing</p>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">🐿️</div>
+          <h4>Squirrel Ops</h4>
+          <p>Community</p>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">🧬</div>
+          <h4>Dr. Fusion</h4>
+          <p>Creative</p>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">🛡️</div>
+          <h4>Guardian</h4>
+          <p>Security</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === COMMUNITY === -->
+  <section id="community" class="community">
+    <div class="section-container">
+      <div class="section-label">🌐 Join the Pack</div>
+      <h2 class="section-title">OOWW <span class="text-gradient">Community</span></h2>
+      <p class="section-desc">
+        The strongest hybrid in crypto needs the strongest community. 
+        Join thousands of OOWW holders and let's take over the jungle together.
+      </p>
+      <div class="social-links">
+        <a href="#" class="social-link"><span class="icon">🐦</span> Twitter / X</a>
+        <a href="#" class="social-link"><span class="icon">💬</span> Telegram</a>
+        <a href="#" class="social-link"><span class="icon">📖</span> DexScreener</a>
+        <a href="#" class="social-link"><span class="icon">🌊</span> Raydium</a>
+        <a href="#" class="social-link"><span class="icon">📊</span> CoinGecko</a>
+        <a href="#" class="social-link"><span class="icon">📄</span> Contract</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- === FOOTER === -->
+  <footer>
+    <p>🐕 + 🦛 + 🐿️ = <strong><span style="color:#e8922e">$OOWW</span></strong></p>
+    <p style="margin-top:0.5rem">Made with 💚 by the Hybrid Council</p>
+    <p class="disclaimer">
+      $OOWW is a meme coin. This is not financial advice. Hybrid creatures are not 
+      responsible for your gains or losses. OOWW responsibly.
+    </p>
+  </footer>
+
+  <!-- === SCRIPTS === -->
+  <script>
+    // Floating coins
+    (function() {
+      const container = document.getElementById('floatCoins');
+      const coins = ['🪙', '🐕', '🦛', '🐿️', '🔥', '💰', '🚀', '🌙', '⚡', '🧬'];
+      for (let i = 0; i < 25; i++) {
+        const el = document.createElement('span');
+        el.className = 'coin-emoji';
+        el.textContent = coins[i % coins.length];
+        el.style.left = Math.random() * 100 + '%';
+        el.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
+        el.style.animationDuration = (15 + Math.random() * 25) + 's';
+        el.style.animationDelay = (Math.random() * 20) + 's';
+        container.appendChild(el);
+      }
+    })();
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Auto-play hero video on user interaction
+    document.addEventListener('click', () => {
+      document.querySelectorAll('video').forEach(v => {
+        if (v.paused) v.play().catch(() => {});
+      });
+    }, { once: true });
+  </script>
+
+</body>
+</html>
