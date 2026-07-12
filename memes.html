@@ -28,7 +28,7 @@
     ::-webkit-scrollbar-thumb { background: #e8922e; border-radius: 4px; }
 
     h1, h2, h3, .heading { font-family: 'Archivo Black', sans-serif; }
-    h1 { font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; line-height: 0.95; }
+    h1 { font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; line-height: 0.92; }
     h2 { font-size: clamp(1.8rem, 4vw, 3rem); text-transform: uppercase; }
     h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
     .text-gradient {
@@ -48,12 +48,7 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(232, 146, 46, 0.15);
     }
-    .nav-logo {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 1.5rem;
-      color: #e8922e;
-      text-decoration: none;
-    }
+    .nav-logo { font-family: 'Archivo Black', sans-serif; font-size: 1.5rem; color: #e8922e; text-decoration: none; }
     .nav-logo svg { vertical-align: middle; margin-right: 8px; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
@@ -70,23 +65,21 @@
     .nav-links .active { color: #e8922e; }
     .nav-links .active::after { width: 100%; }
     .nav-back {
-      background: rgba(232,146,46,0.15);
-      color: #e8922e !important; padding: 0.5rem 1.2rem; border-radius: 50px;
-      font-weight: 800 !important;
+      background: rgba(232,146,46,0.15); color: #e8922e !important;
+      padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 800 !important;
     }
     .nav-back::after { display: none !important; }
 
     /* === HERO === */
     .hero {
-      min-height: 60vh;
-      display: flex; align-items: center; justify-content: center;
+      min-height: 60vh; display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden; padding-top: 80px;
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(232,146,46,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 50%, rgba(124,92,191,0.08) 0%, transparent 60%);
+        radial-gradient(ellipse at 20% 50%, rgba(232,146,46,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(124,92,191,0.1) 0%, transparent 60%);
     }
     .float-emojis {
       position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
@@ -104,19 +97,27 @@
     .hero-content { position: relative; z-index: 1; text-align: center; max-width: 800px; padding: 2rem; }
     .hero-badge {
       display: inline-block;
-      background: rgba(232,146,46,0.15);
-      border: 1px solid rgba(232,146,46,0.3);
+      background: rgba(232,146,46,0.15); border: 1px solid rgba(232,146,46,0.3);
       padding: 0.4rem 1.2rem; border-radius: 50px;
       font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.1em; margin-bottom: 1.5rem;
-      color: #e8922e;
+      letter-spacing: 0.1em; margin-bottom: 1.5rem; color: #e8922e;
     }
     .hero-sub {
       font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-      color: rgba(245,240,232,0.6);
-      margin: 1rem auto 1.5rem;
-      max-width: 600px;
+      color: rgba(245,240,232,0.6); margin: 1rem auto 1.5rem; max-width: 600px;
     }
+
+    /* === MEME COUNTER === */
+    .meme-counter {
+      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+      background: rgba(232,146,46,0.08);
+      border: 1px solid rgba(232,146,46,0.15);
+      border-radius: 50px; padding: 0.5rem 1.5rem;
+      margin: -2rem auto 2rem; width: fit-content;
+      font-size: 0.85rem;
+    }
+    .meme-counter .count { font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; color: #e8922e; }
+    .meme-counter .label { color: rgba(245,240,232,0.5); }
 
     /* === SECTION COMMON === */
     section { padding: 5rem 2rem; position: relative; }
@@ -128,236 +129,96 @@
     }
     .section-title { margin-bottom: 0.5rem; }
     .section-desc {
-      color: rgba(245,240,232,0.6);
-      max-width: 600px; margin-bottom: 2.5rem;
-      font-size: 1rem;
+      color: rgba(245,240,232,0.6); max-width: 600px; margin-bottom: 2.5rem; font-size: 1rem;
     }
 
     /* === TEMPLATE GRID === */
     .template-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
       margin-bottom: 3rem;
     }
     .template-card {
       background: rgba(245,240,232,0.03);
       border: 2px solid rgba(245,240,232,0.08);
-      border-radius: 16px;
-      padding: 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      border-radius: 16px; padding: 0.8rem;
+      cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
     }
     .template-card:hover {
-      border-color: rgba(232,146,46,0.3);
-      transform: translateY(-3px);
+      border-color: rgba(232,146,46,0.3); transform: translateY(-3px);
       box-shadow: 0 8px 30px rgba(232,146,46,0.1);
     }
     .template-card.selected {
-      border-color: #e8922e;
-      box-shadow: 0 0 20px rgba(232,146,46,0.2);
+      border-color: #e8922e; box-shadow: 0 0 20px rgba(232,146,46,0.2);
       background: rgba(232,146,46,0.08);
     }
     .template-card.selected::after {
-      content: '✓ SELECTED';
-      position: absolute; top: 10px; right: 10px;
+      content: '✓ SELECTED'; position: absolute; top: 8px; right: 8px;
       background: #e8922e; color: #0a0a0f;
-      font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
+      font-size: 0.6rem; font-weight: 800; padding: 0.15rem 0.5rem;
+      border-radius: 4px; letter-spacing: 0.05em; z-index: 5;
     }
     .template-preview {
-      width: 100%;
-      aspect-ratio: 1/1;
-      background: rgba(245,240,232,0.05);
-      border-radius: 10px;
-      margin-bottom: 0.8rem;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem;
-      position: relative;
-      overflow: hidden;
+      width: 100%; aspect-ratio: 16/12;
+      background: rgba(245,240,232,0.05); border-radius: 10px;
+      margin-bottom: 0.6rem; position: relative; overflow: hidden;
     }
-    .template-preview canvas {
-      width: 100%; height: 100%;
-      border-radius: 10px;
+    .template-preview canvas { width: 100%; height: 100%; border-radius: 10px; }
+    .template-info { display: flex; justify-content: space-between; align-items: center; }
+    .template-name { font-weight: 700; font-size: 0.8rem; color: #f5f0e8; text-transform: uppercase; letter-spacing: 0.03em; }
+    .template-badge {
+      font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem;
+      border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;
     }
-    .template-name {
-      font-weight: 700; font-size: 0.85rem; color: #f5f0e8;
-      text-transform: uppercase; letter-spacing: 0.03em;
+    .badge-easy { background: rgba(68,255,68,0.15); color: #66ff66; }
+    .badge-viral { background: rgba(232,146,46,0.15); color: #e8922e; }
+    .badge-legendary { background: rgba(232,146,46,0.15); background: linear-gradient(135deg, rgba(232,146,46,0.15), rgba(124,92,191,0.15)); color: #d4a373; }
+    .trending-tag {
+      position: absolute; top: 8px; left: 8px; z-index: 5;
+      font-size: 0.55rem; font-weight: 800; padding: 0.15rem 0.5rem;
+      border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;
     }
-    .template-formats {
-      font-size: 0.7rem; color: rgba(245,240,232,0.4);
-      margin-top: 0.2rem;
-    }
+    .trending-hot { background: #ff4444; color: white; animation: pulse 1.5s infinite; }
+    .trending-new { background: #4488ff; color: white; }
+    .trending-fire { background: #e8922e; color: #0a0a0f; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
 
     /* === GENERATOR PANEL === */
     .generator-section { background: linear-gradient(180deg, #0a0a0f 0%, #0f0d12 100%); }
     .generator-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;
     }
     .generator-controls {
-      background: rgba(245,240,232,0.02);
-      border: 1px solid rgba(245,240,232,0.08);
-      border-radius: 20px;
-      padding: 2rem;
+      background: rgba(245,240,232,0.02); border: 1px solid rgba(245,240,232,0.08);
+      border-radius: 20px; padding: 2rem;
     }
-    .control-group { margin-bottom: 1.5rem; }
+    .control-group { margin-bottom: 1.2rem; }
     .control-group:last-child { margin-bottom: 0; }
     .control-label {
       font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.1em; color: rgba(245,240,232,0.5);
-      margin-bottom: 0.6rem; display: block;
+      letter-spacing: 0.1em; color: rgba(245,240,232,0.5); margin-bottom: 0.5rem; display: block;
     }
     .control-label .required { color: #e8922e; }
     .caption-input {
       width: 100%;
-      background: rgba(245,240,232,0.05);
-      border: 1px solid rgba(245,240,232,0.12);
-      border-radius: 12px;
-      padding: 0.9rem 1rem;
-      color: #f5f0e8;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      transition: all 0.3s;
-      resize: vertical;
+      background: rgba(245,240,232,0.05); border: 1px solid rgba(245,240,232,0.12);
+      border-radius: 12px; padding: 0.8rem 1rem;
+      color: #f5f0e8; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      transition: all 0.3s; resize: vertical;
     }
-    .caption-input:focus {
-      outline: none;
-      border-color: #e8922e;
-      box-shadow: 0 0 15px rgba(232,146,46,0.1);
-    }
+    .caption-input:focus { outline: none; border-color: #e8922e; box-shadow: 0 0 15px rgba(232,146,46,0.1); }
     .caption-input::placeholder { color: rgba(245,240,232,0.25); }
-    .caption-input-sm { min-height: 60px; }
-    .caption-input-lg { min-height: 100px; }
-
-    /* === GENERATE BTN === */
-    .generate-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #e8922e, #ff6b35);
-      color: #0a0a0f;
-      border: none;
-      border-radius: 14px;
-      padding: 1rem 2rem;
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
-    }
-    .generate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,146,46,0.4); }
-    .generate-btn:disabled {
-      opacity: 0.4; cursor: not-allowed;
-      transform: none; box-shadow: none;
-    }
-    .generate-btn .spinner {
-      display: none;
-      width: 20px; height: 20px;
-      border: 2px solid rgba(10,10,15,0.2);
-      border-top-color: #0a0a0f;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
-    .generate-btn.loading .spinner { display: inline-block; }
-    .generate-btn.loading .btn-text { display: none; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* === DOWNLOAD BTN === */
-    .download-btn {
-      width: 100%;
-      background: transparent;
-      color: #f5f0e8;
-      border: 2px solid rgba(245,240,232,0.2);
-      border-radius: 14px;
-      padding: 0.9rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-top: 0.8rem;
-      display: none;
-      align-items: center; justify-content: center; gap: 0.5rem;
-    }
-    .download-btn.visible { display: flex; }
-    .download-btn:hover { border-color: #e8922e; color: #e8922e; }
-    .download-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-    /* === MEME OUTPUT === */
-    .meme-output {
-      background: rgba(245,240,232,0.02);
-      border: 1px solid rgba(245,240,232,0.08);
-      border-radius: 20px;
-      padding: 1.5rem;
-      min-height: 400px;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .meme-placeholder {
-      text-align: center;
-      color: rgba(245,240,232,0.15);
-    }
-    .meme-placeholder .icon { font-size: 4rem; margin-bottom: 1rem; }
-    .meme-placeholder p { font-size: 0.9rem; }
-    .meme-output canvas {
-      max-width: 100%;
-      max-height: 500px;
-      border-radius: 12px;
-      display: none;
-    }
-    .meme-output canvas.visible { display: block; }
-
-    /* === TIPS === */
-    .tips-section {
-      background: rgba(245,240,232,0.02);
-      border: 1px solid rgba(245,240,232,0.06);
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-top: 2rem;
-    }
-    .tips-section h3 { font-size: 0.9rem; margin-bottom: 0.8rem; color: #e8922e; }
-    .tips-section ul { list-style: none; }
-    .tips-section ul li {
-      color: rgba(245,240,232,0.5);
-      font-size: 0.85rem;
-      padding: 0.3rem 0;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .tips-section ul li::before {
-      content: '›';
-      position: absolute; left: 0;
-      color: #e8922e;
-      font-weight: 700;
-    }
+    .caption-input-sm { min-height: 55px; }
 
     /* === COLOR PICKER === */
-    .color-row {
-      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-    }
+    .color-row { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
     .color-option {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: all 0.2s;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid transparent; cursor: pointer; transition: all 0.2s;
     }
     .color-option:hover { transform: scale(1.15); }
-    .color-option.selected {
-      border-color: #f5f0e8;
-      box-shadow: 0 0 12px rgba(232,146,46,0.3);
-      transform: scale(1.1);
-    }
+    .color-option.selected { border-color: #f5f0e8; box-shadow: 0 0 12px rgba(232,146,46,0.3); transform: scale(1.1); }
     .color-white { background: #ffffff; }
     .color-yellow { background: #ffdd00; }
     .color-orange { background: #e8922e; }
@@ -366,88 +227,198 @@
     .color-blue { background: #4488ff; }
     .color-black { background: #111111; }
 
-    /* === AI SECTION === */
+    /* === SIZE BTNS === */
+    .size-row { display: flex; gap: 0.4rem; }
+    .size-btn {
+      padding: 0.35rem 0.9rem; border: 1px solid rgba(245,240,232,0.12);
+      border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.78rem;
+      background: rgba(245,240,232,0.04); color: rgba(245,240,232,0.5);
+      transition: all 0.2s; text-transform: uppercase;
+    }
+    .size-btn:hover { border-color: rgba(232,146,46,0.3); color: #f5f0e8; }
+    .size-btn.active { background: rgba(232,146,46,0.2); border-color: #e8922e; color: #f5f0e8; }
+
+    /* === ACTION ROW === */
+    .action-row { display: flex; gap: 0.8rem; }
+    .action-row .generate-btn { flex: 1; }
+    .action-row .random-btn {
+      width: 54px; height: 54px; border-radius: 14px;
+      background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.12);
+      color: #f5f0e8; font-size: 1.3rem; cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .random-btn:hover { border-color: #e8922e; color: #e8922e; transform: translateY(-2px); }
+
+    .generate-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #e8922e, #ff6b35);
+      color: #0a0a0f; border: none; border-radius: 14px;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Archivo Black', sans-serif; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+    }
+    .generate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,146,46,0.4); }
+    .generate-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* === SHARE ROW === */
+    .share-row {
+      display: flex; gap: 0.5rem; margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      flex: 1; min-width: 80px;
+      padding: 0.6rem; border-radius: 10px;
+      background: rgba(245,240,232,0.04); border: 1px solid rgba(245,240,232,0.1);
+      color: rgba(245,240,232,0.6); font-size: 0.7rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s; text-transform: uppercase;
+      display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+    }
+    .share-btn:hover { border-color: #e8922e; color: #e8922e; }
+    .share-btn.primary { background: rgba(232,146,46,0.15); border-color: rgba(232,146,46,0.3); color: #e8922e; }
+    .share-btn.primary:hover { background: rgba(232,146,46,0.25); }
+
+    /* === MEME OUTPUT === */
+    .meme-output {
+      background: rgba(245,240,232,0.02); border: 1px solid rgba(245,240,232,0.08);
+      border-radius: 20px; padding: 1.5rem;
+      min-height: 400px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; flex-direction: column;
+    }
+    .meme-placeholder { text-align: center; color: rgba(245,240,232,0.12); }
+    .meme-placeholder .icon { font-size: 4rem; margin-bottom: 0.8rem; }
+    .meme-placeholder p { font-size: 0.85rem; }
+    .meme-output canvas {
+      max-width: 100%; max-height: 500px;
+      border-radius: 12px; display: none;
+    }
+    .meme-output canvas.visible { display: block; }
+
+    /* === SAVED TOAST === */
+    .saved-toast {
+      display: none; align-items: center; gap: 0.5rem;
+      background: rgba(68,255,68,0.1); border: 1px solid rgba(68,255,68,0.2);
+      border-radius: 10px; padding: 0.5rem 1rem; margin-bottom: 0.8rem;
+      font-size: 0.8rem; color: #66ff66; font-weight: 700;
+      animation: slideIn 0.3s ease;
+    }
+    .saved-toast.visible { display: flex; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* === TIPS === */
+    .tips-section {
+      background: rgba(245,240,232,0.02); border: 1px solid rgba(245,240,232,0.06);
+      border-radius: 16px; padding: 1.5rem; margin-top: 2rem;
+    }
+    .tips-section h3 { font-size: 0.9rem; margin-bottom: 0.8rem; color: #e8922e; }
+    .tips-section ul { list-style: none; }
+    .tips-section ul li {
+      color: rgba(245,240,232,0.5); font-size: 0.85rem;
+      padding: 0.3rem 0; padding-left: 1.2rem; position: relative;
+    }
+    .tips-section ul li::before { content: '›'; position: absolute; left: 0; color: #e8922e; font-weight: 700; }
+
+    /* === AI MEME LAB === */
     .ai-section {
       margin-top: 3rem;
-      background: linear-gradient(135deg, rgba(232,146,46,0.05), rgba(124,92,191,0.05));
-      border: 1px solid rgba(232,146,46,0.15);
-      border-radius: 20px;
-      padding: 2.5rem;
-      text-align: center;
+      background: linear-gradient(135deg, rgba(232,146,46,0.05), rgba(124,92,191,0.08));
+      border: 1px solid rgba(232,146,46,0.2);
+      border-radius: 24px; padding: 3rem 2.5rem; text-align: center;
+      position: relative; overflow: hidden;
     }
-    .ai-section h3 { margin-bottom: 1rem; }
-    .ai-section p { color: rgba(245,240,232,0.6); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem; }
+    .ai-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(124,92,191,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ai-section h3 { margin-bottom: 1rem; position: relative; }
+    .ai-section .ai-sub {
+      color: rgba(245,240,232,0.5); max-width: 550px; margin: 0 auto 0.5rem;
+      font-size: 0.9rem; position: relative;
+    }
+    .ai-examples {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: center; margin-bottom: 1.5rem; position: relative;
+    }
+    .ai-example-tag {
+      padding: 0.3rem 0.8rem; border-radius: 50px;
+      background: rgba(245,240,232,0.04); border: 1px solid rgba(245,240,232,0.08);
+      font-size: 0.75rem; color: rgba(245,240,232,0.4);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .ai-example-tag:hover { border-color: #e8922e; color: #e8922e; }
     .ai-input {
-      display: flex; gap: 1rem; max-width: 700px; margin: 0 auto;
+      display: flex; gap: 1rem; max-width: 700px; margin: 0 auto; position: relative;
     }
     .ai-input textarea {
       flex: 1;
-      background: rgba(245,240,232,0.05);
-      border: 1px solid rgba(245,240,232,0.12);
-      border-radius: 12px;
-      padding: 0.9rem 1rem;
-      color: #f5f0e8;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      resize: vertical;
-      min-height: 60px;
-      transition: all 0.3s;
+      background: rgba(245,240,232,0.05); border: 1px solid rgba(245,240,232,0.12);
+      border-radius: 14px; padding: 0.9rem 1rem;
+      color: #f5f0e8; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      resize: vertical; min-height: 60px; transition: all 0.3s;
     }
-    .ai-input textarea:focus {
-      outline: none;
-      border-color: #e8922e;
-    }
+    .ai-input textarea:focus { outline: none; border-color: #e8922e; }
     .ai-input textarea::placeholder { color: rgba(245,240,232,0.2); }
     .ai-generate-btn {
       background: linear-gradient(135deg, #7c5cbf, #e8922e);
-      color: #0a0a0f;
-      border: none;
-      border-radius: 12px;
-      padding: 0.9rem 1.8rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s;
-      white-space: nowrap;
-      display: flex; align-items: center; gap: 0.5rem;
+      color: #0a0a0f; border: none; border-radius: 14px;
+      padding: 0.9rem 1.8rem; font-weight: 700; font-size: 0.9rem;
+      text-transform: uppercase; cursor: pointer; transition: all 0.3s;
+      white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;
     }
     .ai-generate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,92,191,0.3); }
     .ai-generate-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-    .ai-status {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: rgba(245,240,232,0.4);
-      display: none;
+
+    /* === MEME OF THE WEEK === */
+    .motw-section {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, rgba(232,146,46,0.05), rgba(255,107,53,0.05));
+      border: 1px solid rgba(232,146,46,0.12);
+      border-radius: 24px; padding: 2.5rem; text-align: center;
     }
-    .ai-status.visible { display: block; }
+    .motw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+    .motw-card {
+      background: rgba(245,240,232,0.03); border: 1px solid rgba(245,240,232,0.06);
+      border-radius: 16px; padding: 1.5rem; transition: all 0.3s;
+    }
+    .motw-card:hover { border-color: rgba(232,146,46,0.2); transform: translateY(-3px); }
+    .motw-card .rank { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .motw-card .prize { font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; color: #e8922e; }
+    .motw-card .label { font-size: 0.75rem; color: rgba(245,240,232,0.4); text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* === FOOTER === */
     footer {
-      text-align: center;
-      padding: 3rem 2rem;
+      text-align: center; padding: 3rem 2rem;
       border-top: 1px solid rgba(232,146,46,0.08);
     }
-    footer p { font-size: 0.85rem; color: rgba(245,240,232,0.4); }
-    footer .disclaimer { font-size: 0.7rem; color: rgba(245,240,232,0.2); margin-top: 0.5rem; }
+    footer .footer-creed {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.8rem; text-transform: uppercase; line-height: 1.3; margin-bottom: 0.5rem;
+    }
+    footer .footer-sub { color: rgba(245,240,232,0.3); font-size: 0.85rem; margin-bottom: 0.3rem; }
+    footer .footer-by { color: #e8922e; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    footer .disclaimer { font-size: 0.7rem; color: rgba(245,240,232,0.15); margin-top: 0.5rem; }
 
     /* === RESPONSIVE === */
-    @media (max-width: 900px) {
-      .generator-layout { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 900px) { .generator-layout { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.2rem; }
       .nav-links { gap: 1rem; }
       .nav-links a { font-size: 0.75rem; }
       section { padding: 3rem 1.2rem; }
-      .template-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.8rem; }
-      .template-card { padding: 0.7rem; }
-      .template-preview { font-size: 2rem; }
+      .template-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+      .template-card { padding: 0.6rem; }
       .ai-input { flex-direction: column; }
+      .motw-grid { grid-template-columns: 1fr; }
+      .share-row { flex-wrap: wrap; }
+      .share-btn { min-width: 70px; font-size: 0.65rem; }
     }
     @media (max-width: 480px) {
       h1 { font-size: 2rem; }
       .nav-links a { font-size: 0.7rem; }
+      .action-row { flex-direction: column; }
+      .action-row .random-btn { width: 100%; height: 44px; }
     }
   </style>
 </head>
@@ -489,21 +460,27 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-badge">🎨 OOWW MEME FACTORY</div>
-      <h1>Meme <span class="text-gradient">Generator</span></h1>
+      <h1>Create the Next Viral<br><span class="text-gradient">OOWW Meme</span></h1>
       <p class="hero-sub">
-        Drop OOWW into the internet's most iconic meme templates. 
-        Select a template, add your captions, and create viral hybrid energy in seconds.
+        Turn every legendary meme into an OOWW meme in seconds.
+        Pick a template, add your captions, and let the hybrid go viral.
       </p>
     </div>
   </section>
+
+  <!-- === MEME COUNTER === -->
+  <div class="meme-counter" style="display:none" id="memeCounter">
+    <span>🧬</span>
+    <span class="count" id="memeCount">0</span>
+    <span class="label">Memes Generated by the OOWW Army</span>
+  </div>
 
   <!-- === TEMPLATE SELECTION === -->
   <section>
     <div class="section-container">
       <div class="section-label">📋 Step 1</div>
       <h2 class="section-title">Choose Your <span class="text-gradient">Template</span></h2>
-      <p class="section-desc">Pick a meme format. OOWW will be the star of every one.</p>
-      
+      <p class="section-desc">Pick a format. OOWW will be the star of every one.</p>
       <div class="template-grid" id="templateGrid"></div>
     </div>
   </section>
@@ -513,25 +490,19 @@
     <div class="section-container">
       <div class="section-label">⚡ Step 2</div>
       <h2 class="section-title">Generate Your <span class="text-gradient">Meme</span></h2>
-      <p class="section-desc">Add captions, pick colors, and bring your hybrid meme to life.</p>
+      <p class="section-desc">Add captions, pick colors — your meme updates live.</p>
 
       <div class="generator-layout">
         <!-- Controls -->
         <div class="generator-controls">
           <div class="control-group">
-            <label class="control-label">
-              <span class="required">*</span> Top Text
-            </label>
+            <label class="control-label"><span class="required">*</span> Top Text</label>
             <textarea class="caption-input caption-input-sm" id="topText" placeholder="e.g. I KEEP IT SIMPLE" rows="2"></textarea>
           </div>
-
           <div class="control-group">
-            <label class="control-label">
-              Bottom Text
-            </label>
+            <label class="control-label">Bottom Text</label>
             <textarea class="caption-input caption-input-sm" id="bottomText" placeholder="e.g. STRENGTH. SPEED. BALANCE." rows="2"></textarea>
           </div>
-
           <div class="control-group">
             <label class="control-label">Text Color</label>
             <div class="color-row" id="textColorPicker">
@@ -544,28 +515,36 @@
               <div class="color-option color-black" data-color="#111111" title="Black"></div>
             </div>
           </div>
-
           <div class="control-group">
             <label class="control-label">Meme Size</label>
-            <div class="color-row" style="gap:0.5rem">
-              <button class="nav-back" id="sizeNormal" style="padding:0.4rem 1rem;border:none;background:rgba(232,146,46,0.2);color:#f5f0e8;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.8rem">Standard</button>
-              <button class="nav-back" id="sizeWide" style="padding:0.4rem 1rem;border:none;background:rgba(232,146,46,0.2);color:#f5f0e8;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.8rem">Wide</button>
-              <button class="nav-back" id="sizeSquare" style="padding:0.4rem 1rem;border:none;background:rgba(245,240,232,0.08);color:rgba(245,240,232,0.4);border-radius:8px;cursor:pointer;font-weight:600;font-size:0.8rem">Square</button>
+            <div class="size-row">
+              <button class="size-btn active" data-size="standard">Standard</button>
+              <button class="size-btn" data-size="wide">Wide</button>
+              <button class="size-btn" data-size="square">Square</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="action-row">
+              <button class="generate-btn" id="generateBtn">🔥 Let OOWW Cook</button>
+              <button class="random-btn" id="randomBtn" title="Random Meme">🎲</button>
             </div>
           </div>
 
-          <button class="generate-btn" id="generateBtn">
-            <span class="spinner"></span>
-            <span class="btn-text">🎨 Generate Meme</span>
-          </button>
-          <button class="download-btn" id="downloadBtn">⬇️ Download Meme</button>
+          <!-- Share Row (hidden until meme generated) -->
+          <div class="share-row" id="shareRow" style="display:none">
+            <button class="share-btn" id="downloadShareBtn">⬇️ PNG</button>
+            <button class="share-btn primary" id="shareXBtn">🐦 Share on X</button>
+            <button class="share-btn" id="copyImageBtn">📋 Copy</button>
+            <button class="share-btn" id="copyCaptionBtn">✏️ Caption</button>
+          </div>
         </div>
 
         <!-- Output -->
         <div class="meme-output" id="memeOutput">
+          <div class="saved-toast" id="savedToast">✅ Meme Saved!</div>
           <div class="meme-placeholder" id="placeholder">
             <div class="icon">🎭</div>
-            <p>Select a template and add captions<br/>then click <strong style="color:#e8922e">Generate</strong></p>
+            <p>Select a template & type your captions<br/>Preview updates <strong style="color:#e8922e">live</strong></p>
           </div>
           <canvas id="memeCanvas"></canvas>
         </div>
@@ -576,37 +555,81 @@
         <h3>💡 Pro Tips</h3>
         <ul>
           <li>Short, punchy captions hit hardest — think "I KEEP IT SIMPLE" not a paragraph</li>
-          <li>Use OOWW's hybrid theme in your text: strength, balance, agility, fusion</li>
+          <li>Use OOWW's hybrid theme: strength, balance, agility, fusion</li>
           <li>White text with black outline is the classic meme look (default)</li>
-          <li>Download and share on Twitter/X with <strong>#OOWW</strong> and <strong>#$OOWW</strong></li>
+          <li>Click 🎲 for a random meme — discover your next winner</li>
+          <li>Secret: type "MOO DENG" or "PEPE" for easter eggs 🥚</li>
+          <li>Share on X with <strong>#OOWW</strong> and <strong>#$OOWW</strong></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- === AI SECTION === -->
+  <!-- === AI MEME LAB === -->
   <section>
     <div class="section-container">
       <div class="ai-section">
-        <h3>🤖 AI Meme Factory <span class="text-gradient">(Coming Soon)</span></h3>
-        <p>
-          Describe any meme scene and we'll generate a custom OOWW image using AI. 
-          No template limits — just describe and watch OOWW come to life.
-        </p>
+        <h3>🔬 AI Meme Lab <span class="text-gradient">(Coming Soon)</span></h3>
+        <p class="ai-sub">Describe literally any scene. AI generates an OOWW version instantly.</p>
+        <div class="ai-examples" id="aiExamples">
+          <span class="ai-example-tag">"OOWW negotiating with Satoshi"</span>
+          <span class="ai-example-tag">"OOWW on Wall Street"</span>
+          <span class="ai-example-tag">"OOWW in Breaking Bad"</span>
+          <span class="ai-example-tag">"OOWW riding a rocket to $1"</span>
+          <span class="ai-example-tag">"OOWW as a gladiator"</span>
+        </div>
         <div class="ai-input">
-          <textarea id="aiPrompt" placeholder='e.g. "OOWW as the Distracted Boyfriend meme, looking at a bag of SOL while his hippo girlfriend watches" — AI mode.' disabled></textarea>
-          <button class="ai-generate-btn" disabled>🤖 Generate</button>
+          <textarea id="aiPrompt" placeholder='Describe any scene — "OOWW accepting an Oscar" or "OOWW fighting a bear"...' disabled></textarea>
+          <button class="ai-generate-btn" disabled>🧪 Generate</button>
         </div>
-        <div class="ai-status" id="aiStatus">
-          🧬 AI Meme Factory is under construction. For now, use the manual generator above!
+        <p style="color:rgba(245,240,232,0.25);font-size:0.75rem;margin-top:1rem">AI generation requires a FAL API key. Coming soon with the $OOWW launch!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- === MEME OF THE WEEK === -->
+  <section>
+    <div class="section-container">
+      <div class="motw-section">
+        <div class="section-label">🏆 Weekly Challenge</div>
+        <h2 class="section-title">Meme of the <span class="text-gradient">Week</span></h2>
+        <p class="section-desc" style="margin:0.5rem auto 1.5rem">
+          Create the funniest OOWW meme. Post on X with <strong style="color:#e8922e">#OOWW</strong>.
+          Winners picked every Friday.
+        </p>
+        <div class="motw-grid">
+          <div class="motw-card">
+            <div class="rank">🥇</div>
+            <div class="prize">50,000 $OOWW</div>
+            <div class="label">1st Place</div>
+          </div>
+          <div class="motw-card">
+            <div class="rank">🥈</div>
+            <div class="prize">25,000 $OOWW</div>
+            <div class="label">2nd Place</div>
+          </div>
+          <div class="motw-card">
+            <div class="rank">🥉</div>
+            <div class="prize">10,000 $OOWW</div>
+            <div class="label">3rd Place</div>
+          </div>
         </div>
+        <p style="color:rgba(245,240,232,0.3);font-size:0.8rem">
+          Create memes → Post on X with #OOWW → Tag @oowwonsol → Win weekly 🏆
+        </p>
       </div>
     </div>
   </section>
 
   <!-- === FOOTER === -->
   <footer>
-    <p>💪 Moo Deng's Strength ✦ ⚖️ Peanut's Balance ✦ ⚡ Shiba Army's Agility ✦ 🔥 $OOWW</p>
+    <div class="footer-creed">
+      <span style="color:#e8922e">Strength</span> 🦛 &nbsp;
+      <span style="color:#e8922e">Agility</span> 🐕 &nbsp;
+      <span style="color:#e8922e">Balance</span> 🐿️
+    </div>
+    <div class="footer-sub">Three legends. One beast.</div>
+    <div class="footer-by">Powered by the OOWW Army</div>
     <p class="disclaimer">$OOWW is a meme coin. Hybrid creatures are not responsible for your gains or losses. OOWW responsibly.</p>
   </footer>
 
@@ -626,226 +649,236 @@
       }
     })();
 
+    // ============ MEME COUNT ============
+    let memeCount = parseInt(localStorage.getItem('oowwMemeCount') || '0');
+
     // ============ TEMPLATE DEFINITIONS ============
     const TEMPLATES = [
-      {
-        id: 'drake',
-        name: 'Drake',
-        emoji: '👎👍',
-        formats: 'top/bottom',
-        type: 'drake',
-        desc: 'Drake rejects then approves'
-      },
-      {
-        id: 'gigachad',
-        name: 'Gigachad',
-        emoji: '🧔',
-        formats: 'top/bottom',
-        type: 'single',
-        desc: 'The ultimate gigachad flex'
-      },
-      {
-        id: 'bell-curve',
-        name: 'Bell Curve',
-        emoji: '📊',
-        formats: '3 panels',
-        type: 'bell-curve',
-        desc: 'Intelligence distribution meme'
-      },
-      {
-        id: 'change-my-mind',
-        name: 'Change My Mind',
-        emoji: '🧠',
-        formats: 'top text',
-        type: 'single',
-        desc: 'Steven Crowder at the table'
-      },
-      {
-        id: 'this-is-fine',
-        name: 'This Is Fine',
-        emoji: '🔥☕',
-        formats: 'top text',
-        type: 'single',
-        desc: 'Everything is fine (it\'s not)'
-      },
-      {
-        id: 'distracted',
-        name: 'Distracted BF',
-        emoji: '😍',
-        formats: '3 panels',
-        type: 'distracted',
-        desc: 'He keeps looking back'
-      },
-      {
-        id: 'girl-math',
-        name: 'Girl Math',
-        emoji: '🧮',
-        formats: 'top/bottom',
-        type: 'single',
-        desc: 'Flawless crypto logic'
-      },
-      {
-        id: 'chad-vs-virgin',
-        name: 'Chad vs Virgin',
-        emoji: '⚔️',
-        formats: '2 panels',
-        type: 'split',
-        desc: 'OOWW vs the competition'
-      },
-      {
-        id: 'disaster-girl',
-        name: 'Disaster Girl',
-        emoji: '🔥😏',
-        formats: 'top text',
-        type: 'single',
-        desc: 'Smiling at the chaos'
-      },
-      {
-        id: 'always-has-been',
-        name: 'Always Has Been',
-        emoji: '🧑‍🚀🔫',
-        formats: '2 panels',
-        type: 'split',
-        desc: 'The friend was the memecoin'
-      },
-      {
-        id: 'boardroom',
-        name: 'Boardroom',
-        emoji: '🏢',
-        formats: 'top text',
-        type: 'single',
-        desc: 'Pointing at the chart'
-      },
-      {
-        id: 'gru-plan',
-        name: 'Gru Plan',
-        emoji: '🧑‍🔬',
-        formats: '4 panels',
-        type: 'gru-plan',
-        desc: 'The master plan unfolds'
-      }
+      { id: 'drake', name: 'Drake', emoji: '👎👍', formats: 'top/bottom', type: 'drake', difficulty: 'easy', trending: 'hot', desc: 'Drake rejects then approves' },
+      { id: 'gigachad', name: 'Gigachad', emoji: '🧔', formats: 'top/bottom', type: 'single', difficulty: 'easy', trending: 'fire', desc: 'The ultimate gigachad flex' },
+      { id: 'bell-curve', name: 'Bell Curve', emoji: '📊', formats: '3 panels', type: 'bell-curve', difficulty: 'viral', trending: null, desc: 'Intelligence distribution meme' },
+      { id: 'change-my-mind', name: 'Change My Mind', emoji: '🧠', formats: 'top text', type: 'single', difficulty: 'easy', trending: null, desc: 'Steven Crowder at the table' },
+      { id: 'this-is-fine', name: 'This Is Fine', emoji: '🔥☕', formats: 'top text', type: 'single', difficulty: 'easy', trending: 'hot', desc: 'Everything is fine (it\'s not)' },
+      { id: 'distracted', name: 'Distracted BF', emoji: '😍', formats: '3 panels', type: 'distracted', difficulty: 'viral', trending: 'fire', desc: 'He keeps looking back' },
+      { id: 'girl-math', name: 'Girl Math', emoji: '🧮', formats: 'top/bottom', type: 'single', difficulty: 'viral', trending: 'new', desc: 'Flawless crypto logic' },
+      { id: 'chad-vs-virgin', name: 'Chad vs Virgin', emoji: '⚔️', formats: '2 panels', type: 'split', difficulty: 'viral', trending: null, desc: 'OOWW vs the competition' },
+      { id: 'disaster-girl', name: 'Disaster Girl', emoji: '🔥😏', formats: 'top text', type: 'single', difficulty: 'legendary', trending: null, desc: 'Smiling at the chaos' },
+      { id: 'always-has-been', name: 'Always Has Been', emoji: '🧑‍🚀🔫', formats: '2 panels', type: 'split', difficulty: 'legendary', trending: null, desc: 'The friend was the memecoin' },
+      { id: 'boardroom', name: 'Boardroom', emoji: '🏢', formats: 'top text', type: 'single', difficulty: 'easy', trending: 'new', desc: 'Pointing at the chart' },
+      { id: 'gru-plan', name: 'Gru Plan', emoji: '🧑‍🔬', formats: '4 panels', type: 'gru-plan', difficulty: 'legendary', trending: null, desc: 'The master plan unfolds' }
     ];
 
-    // ============ RENDER TEMPLATES ============
+    // ============ STATE ============
     let selectedTemplate = null;
     let selectedColor = '#ffffff';
-    let memeSize = 'standard'; // standard, wide, square
+    let memeSize = 'standard';
+    let currentMemeDataUrl = null;
 
-    // Global template selector (used by inline onclick)
     function selectTemplate(id, el) {
       document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
       if (el) el.classList.add('selected');
       selectedTemplate = id;
+      liveUpdate();
     }
 
+    // ============ THUMBNAIL RENDERER ============
+    function renderThumbnail(canvas, template) {
+      const ctx = canvas.getContext('2d');
+      const w = 300, h = 225;
+      canvas.width = w; canvas.height = h;
+
+      ctx.fillStyle = '#13131a';
+      ctx.fillRect(0, 0, w, h);
+
+      // Draw mini OOWW character for all thumbnails
+      ctx.save();
+      ctx.scale(0.35, 0.35);
+      drawOOWWCharacter(ctx, w/0.35 * 0.45, h/0.35 * 0.55, h/0.35 * 0.5);
+      ctx.restore();
+
+      // Template-specific decorations
+      ctx.fillStyle = 'rgba(245,240,232,0.04)';
+      ctx.font = '12px Arial';
+      ctx.textAlign = 'center';
+
+      if (template.id === 'drake') {
+        // Red X on left
+        ctx.fillStyle = 'rgba(255,68,68,0.15)';
+        ctx.fillRect(10, 20, w*0.15, h*0.3);
+        ctx.fillStyle = 'rgba(255,68,68,0.5)';
+        ctx.font = 'bold 28px Arial';
+        ctx.fillText('✕', w*0.12, 55);
+        // Green check on right
+        ctx.fillStyle = 'rgba(68,255,68,0.15)';
+        ctx.fillRect(w*0.72, 20, w*0.15, h*0.3);
+        ctx.fillStyle = 'rgba(68,255,68,0.5)';
+        ctx.font = 'bold 28px Arial';
+        ctx.fillText('✓', w*0.8, 55);
+      } else if (template.id === 'distracted') {
+        ctx.fillStyle = 'rgba(232,146,46,0.1)';
+        ctx.font = '20px Arial';
+        ctx.fillText('😍 ➡️', w*0.3, 50);
+        ctx.fillText('💰', w*0.7, 50);
+      } else if (template.id === 'bell-curve') {
+        ctx.strokeStyle = 'rgba(232,146,46,0.3)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(30, h-30);
+        ctx.quadraticCurveTo(w*0.2, 30, w*0.5, h*0.2);
+        ctx.quadraticCurveTo(w*0.8, 30, w-30, h-30);
+        ctx.stroke();
+      } else if (template.id === 'gru-plan') {
+        ctx.strokeStyle = 'rgba(232,146,46,0.2)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(15, 10, w*0.42, h*0.4);
+        ctx.strokeRect(w*0.52, 10, w*0.42, h*0.4);
+        ctx.strokeRect(15, h*0.52, w*0.42, h*0.4);
+        ctx.strokeRect(w*0.52, h*0.52, w*0.42, h*0.4);
+      } else if (template.id === 'this-is-fine') {
+        ctx.fillStyle = 'rgba(232,146,46,0.08)';
+        ctx.beginPath();
+        ctx.arc(w*0.7, 50, 20, 0, Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(232,146,46,0.1)';
+        ctx.font = '18px Arial';
+        ctx.fillText('🔥 ☕', w*0.7, 55);
+      } else if (template.id === 'change-my-mind') {
+        ctx.fillStyle = 'rgba(245,240,232,0.06)';
+        ctx.font = 'bold 10px Arial';
+        ctx.fillText('CHANGE', w*0.5, 170);
+        ctx.fillText('MY MIND', w*0.5, 185);
+      }
+
+      // Template name overlay
+      ctx.fillStyle = 'rgba(245,240,232,0.08)';
+      ctx.font = 'bold 14px Archivo Black, Arial';
+      ctx.fillText(template.name, w*0.5, h-12);
+    }
+
+    // ============ RENDER TEMPLATES ============
     const templateGrid = document.getElementById('templateGrid');
-    
+
     TEMPLATES.forEach(t => {
       const card = document.createElement('div');
       card.className = 'template-card';
       card.dataset.id = t.id;
-      
+
       const preview = document.createElement('div');
       preview.className = 'template-preview';
-      preview.textContent = t.emoji;
-      
+      const thumbCanvas = document.createElement('canvas');
+      preview.appendChild(thumbCanvas);
+
+      const info = document.createElement('div');
+      info.className = 'template-info';
+
       const name = document.createElement('div');
       name.className = 'template-name';
       name.textContent = t.name;
-      
-      const formats = document.createElement('div');
-      formats.className = 'template-formats';
-      formats.textContent = t.formats;
-      
+
+      const badge = document.createElement('span');
+      badge.className = 'template-badge';
+      if (t.difficulty === 'easy') { badge.classList.add('badge-easy'); badge.textContent = '🔥 Easy'; }
+      else if (t.difficulty === 'viral') { badge.classList.add('badge-viral'); badge.textContent = '⚡ Viral'; }
+      else if (t.difficulty === 'legendary') { badge.classList.add('badge-legendary'); badge.textContent = '👑 Legendary'; }
+
+      info.appendChild(name);
+      info.appendChild(badge);
+
+      // Trending tag
+      if (t.trending === 'hot') {
+        const tag = document.createElement('div');
+        tag.className = 'trending-tag trending-hot';
+        tag.textContent = '🔥 Hot';
+        preview.appendChild(tag);
+      } else if (t.trending === 'new') {
+        const tag = document.createElement('div');
+        tag.className = 'trending-tag trending-new';
+        tag.textContent = '✨ New';
+        preview.appendChild(tag);
+      } else if (t.trending === 'fire') {
+        const tag = document.createElement('div');
+        tag.className = 'trending-tag trending-fire';
+        tag.textContent = '🔥 Trending';
+        preview.appendChild(tag);
+      }
+
       card.appendChild(preview);
-      card.appendChild(name);
-      card.appendChild(formats);
-      
+      card.appendChild(info);
+
       card.setAttribute('onclick', `selectTemplate('${t.id}', this)`);
-      
       templateGrid.appendChild(card);
+
+      // Render thumbnail after DOM append
+      setTimeout(() => renderThumbnail(thumbCanvas, t), 50);
     });
 
-    // Select first template by default
+    // Auto-select first template
     setTimeout(() => {
       const firstCard = document.querySelector('.template-card');
-      if (firstCard) {
-        firstCard.click();
-      }
+      if (firstCard) { firstCard.click(); }
     }, 100);
 
-    // ============ COLOR PICKER ============
+    // ============ COLOR & SIZE ============
     document.querySelectorAll('.color-option').forEach(el => {
       el.addEventListener('click', () => {
         document.querySelectorAll('.color-option').forEach(c => c.classList.remove('selected'));
         el.classList.add('selected');
         selectedColor = el.dataset.color;
+        liveUpdate();
       });
     });
 
-    // ============ SIZE SELECTOR ============
-    document.getElementById('sizeNormal').addEventListener('click', () => {
-      memeSize = 'standard';
-      document.getElementById('sizeNormal').style.background = 'rgba(232,146,46,0.2)';
-      document.getElementById('sizeNormal').style.color = '#f5f0e8';
-      document.getElementById('sizeWide').style.background = 'rgba(232,146,46,0.2)';
-      document.getElementById('sizeWide').style.color = '#f5f0e8';
-      document.getElementById('sizeSquare').style.background = 'rgba(245,240,232,0.08)';
-      document.getElementById('sizeSquare').style.color = 'rgba(245,240,232,0.4)';
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        memeSize = btn.dataset.size;
+        liveUpdate();
+      });
     });
-    document.getElementById('sizeWide').addEventListener('click', () => {
-      memeSize = 'wide';
-      document.getElementById('sizeNormal').style.background = 'rgba(245,240,232,0.08)';
-      document.getElementById('sizeNormal').style.color = 'rgba(245,240,232,0.4)';
-      document.getElementById('sizeWide').style.background = 'rgba(232,146,46,0.2)';
-      document.getElementById('sizeWide').style.color = '#f5f0e8';
-      document.getElementById('sizeSquare').style.background = 'rgba(245,240,232,0.08)';
-      document.getElementById('sizeSquare').style.color = 'rgba(245,240,232,0.4)';
-    });
-    document.getElementById('sizeSquare').addEventListener('click', () => {
-      memeSize = 'square';
-      document.getElementById('sizeNormal').style.background = 'rgba(245,240,232,0.08)';
-      document.getElementById('sizeNormal').style.color = 'rgba(245,240,232,0.4)';
-      document.getElementById('sizeWide').style.background = 'rgba(245,240,232,0.08)';
-      document.getElementById('sizeWide').style.color = 'rgba(245,240,232,0.4)';
-      document.getElementById('sizeSquare').style.background = 'rgba(232,146,46,0.2)';
-      document.getElementById('sizeSquare').style.color = '#f5f0e8';
-    });
+
+    // ============ LIVE PREVIEW ============
+    let liveTimeout = null;
+    function liveUpdate() {
+      if (liveTimeout) clearTimeout(liveTimeout);
+      liveTimeout = setTimeout(() => {
+        if (selectedTemplate) generateMeme();
+      }, 300);
+    }
+
+    document.getElementById('topText').addEventListener('input', liveUpdate);
+    document.getElementById('bottomText').addEventListener('input', liveUpdate);
 
     // ============ MEME GENERATOR ============
     const canvas = document.getElementById('memeCanvas');
     const ctx = canvas.getContext('2d');
     const placeholder = document.getElementById('placeholder');
-    const downloadBtn = document.getElementById('downloadBtn');
+    const savedToast = document.getElementById('savedToast');
+    const shareRow = document.getElementById('shareRow');
     const generateBtn = document.getElementById('generateBtn');
 
-    // Draw OOWW character on canvas
+    // ========== OOWW CHARACTER ==========
     function drawOOWWCharacter(ctx, x, y, size) {
-      // Body (hippo)
       ctx.fillStyle = '#8B6F5E';
       ctx.beginPath();
       ctx.ellipse(x, y + size * 0.15, size * 0.32, size * 0.35, 0, 0, Math.PI * 2);
       ctx.fill();
-      
-      // Lighter belly
+
       ctx.fillStyle = '#A0887A';
       ctx.beginPath();
       ctx.ellipse(x, y + size * 0.22, size * 0.2, size * 0.25, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Head (shiba)
       ctx.fillStyle = '#D4945A';
       ctx.beginPath();
       ctx.ellipse(x, y - size * 0.25, size * 0.2, size * 0.18, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Shiba face markings (white)
       ctx.fillStyle = '#F5E6D0';
       ctx.beginPath();
       ctx.ellipse(x, y - size * 0.2, size * 0.12, size * 0.1, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Eyes
       ctx.fillStyle = '#1a1a2e';
       ctx.beginPath();
       ctx.ellipse(x - size * 0.07, y - size * 0.27, size * 0.025, size * 0.03, 0, 0, Math.PI * 2);
@@ -854,7 +887,6 @@
       ctx.ellipse(x + size * 0.07, y - size * 0.27, size * 0.025, size * 0.03, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Eye shine
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
       ctx.arc(x - size * 0.05, y - size * 0.28, size * 0.008, 0, Math.PI * 2);
@@ -863,431 +895,306 @@
       ctx.arc(x + size * 0.09, y - size * 0.28, size * 0.008, 0, Math.PI * 2);
       ctx.fill();
 
-      // Nose
       ctx.fillStyle = '#2a1a1a';
       ctx.beginPath();
       ctx.ellipse(x, y - size * 0.2, size * 0.03, size * 0.02, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Smile
-      ctx.strokeStyle = '#2a1a1a';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(x, y - size * 0.17, size * 0.06, 0.1, Math.PI - 0.1);
-      ctx.stroke();
+      // Check for easter egg
+      const topText = (document.getElementById('topText').value || '').toLowerCase();
+      const bottomText = (document.getElementById('bottomText').value || '').toLowerCase();
+      const combo = topText + ' ' + bottomText;
 
-      // Ears (shiba)
+      if (combo.includes('moo deng')) {
+        // Laughing mouth
+        ctx.fillStyle = '#1a1a1a';
+        ctx.beginPath();
+        ctx.arc(x, y - size * 0.15, size * 0.08, 0, Math.PI);
+        ctx.fill();
+        ctx.fillStyle = '#ff6b6b';
+        ctx.beginPath();
+        ctx.arc(x, y - size * 0.15, size * 0.06, 0, Math.PI);
+        ctx.fill();
+      } else if (combo.includes('pepe')) {
+        // Green tint the character
+        ctx.fillStyle = 'rgba(68,255,68,0.12)';
+        ctx.fillRect(x - size * 0.5, y - size * 0.6, size, size * 0.9);
+      } else {
+        ctx.strokeStyle = '#2a1a1a';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(x, y - size * 0.17, size * 0.06, 0.1, Math.PI - 0.1);
+        ctx.stroke();
+      }
+
       ctx.fillStyle = '#D4945A';
       ctx.beginPath();
       ctx.moveTo(x - size * 0.15, y - size * 0.35);
       ctx.lineTo(x - size * 0.22, y - size * 0.5);
       ctx.lineTo(x - size * 0.08, y - size * 0.42);
-      ctx.closePath();
-      ctx.fill();
-      
+      ctx.closePath(); ctx.fill();
       ctx.beginPath();
       ctx.moveTo(x + size * 0.15, y - size * 0.35);
       ctx.lineTo(x + size * 0.22, y - size * 0.5);
       ctx.lineTo(x + size * 0.08, y - size * 0.42);
-      ctx.closePath();
-      ctx.fill();
+      ctx.closePath(); ctx.fill();
 
-      // Inner ear (pink)
       ctx.fillStyle = '#E8A0A0';
       ctx.beginPath();
       ctx.moveTo(x - size * 0.13, y - size * 0.37);
       ctx.lineTo(x - size * 0.19, y - size * 0.47);
       ctx.lineTo(x - size * 0.1, y - size * 0.42);
-      ctx.closePath();
-      ctx.fill();
-      
+      ctx.closePath(); ctx.fill();
       ctx.beginPath();
       ctx.moveTo(x + size * 0.13, y - size * 0.37);
       ctx.lineTo(x + size * 0.19, y - size * 0.47);
       ctx.lineTo(x + size * 0.1, y - size * 0.42);
-      ctx.closePath();
-      ctx.fill();
+      ctx.closePath(); ctx.fill();
 
-      // Tail (squirrel - fluffy)
       ctx.fillStyle = '#D4945A';
       ctx.beginPath();
       ctx.ellipse(x + size * 0.42, y - size * 0.1, size * 0.18, size * 0.08, 0.5, 0, Math.PI * 2);
       ctx.fill();
-      // Fluffy tip
       ctx.fillStyle = '#E8C9A0';
       ctx.beginPath();
       ctx.ellipse(x + size * 0.48, y - size * 0.14, size * 0.08, size * 0.06, 0.5, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // Draw Drake template
+    // ========== DRAW FUNCTIONS ==========
     function drawDrakeMeme(canvas, topText, bottomText, textColor) {
-      const w = canvas.width;
-      const h = canvas.height;
-      const halfH = h / 2;
-      
-      // Background
-      ctx.fillStyle = '#0a0a0f';
-      ctx.fillRect(0, 0, w, h);
-      
-      // === TOP PANEL (Drake rejecting) ===
-      ctx.fillStyle = '#1a1620';
-      ctx.fillRect(0, 0, w, halfH);
-      
-      // Drake silhouette (rejecting)
+      const w = canvas.width, h = canvas.height, halfH = h / 2;
+      ctx.fillStyle = '#0a0a0f'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#1a1620'; ctx.fillRect(0, 0, w, halfH);
       ctx.fillStyle = '#2a2a3a';
-      ctx.beginPath();
-      ctx.arc(w * 0.3, halfH * 0.5, halfH * 0.15, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(w * 0.3, halfH * 0.5, halfH * 0.15, 0, Math.PI * 2); ctx.fill();
       ctx.fillRect(w * 0.2, halfH * 0.65, w * 0.2, halfH * 0.35);
-      
-      // Reject hand
-      ctx.strokeStyle = '#2a2a3a';
-      ctx.lineWidth = 8;
-      ctx.beginPath();
-      ctx.moveTo(w * 0.25, halfH * 0.6);
-      ctx.lineTo(w * 0.05, halfH * 0.3);
-      ctx.stroke();
-      
-      // X mark
+      ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 8;
+      ctx.beginPath(); ctx.moveTo(w * 0.25, halfH * 0.6); ctx.lineTo(w * 0.05, halfH * 0.3); ctx.stroke();
       ctx.fillStyle = '#ff4444';
-      ctx.font = `bold ${halfH * 0.15}px Arial`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      ctx.font = 'bold ' + (halfH * 0.15) + 'px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText('✕', w * 0.65, halfH * 0.5);
-      
-      // Label
-      ctx.fillStyle = 'rgba(245,240,232,0.6)';
-      ctx.font = `${halfH * 0.06}px Arial`;
+      ctx.fillStyle = 'rgba(245,240,232,0.5)'; ctx.font = (halfH * 0.055) + 'px Arial';
       ctx.fillText(topText || 'OTHER MEMECOINS', w * 0.65, halfH * 0.7);
-      
-      // === BOTTOM PANEL (Drake approving) ===
-      ctx.fillStyle = '#16201a';
-      ctx.fillRect(0, halfH, w, halfH);
-      
-      // Drake silhouette (approving) + OOWW character
+      ctx.fillStyle = '#16201a'; ctx.fillRect(0, halfH, w, halfH);
       drawOOWWCharacter(ctx, w * 0.3, halfH + halfH * 0.35, halfH * 0.4);
-      
-      // ✓ mark
       ctx.fillStyle = '#44ff44';
-      ctx.font = `bold ${halfH * 0.15}px Arial`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      ctx.font = 'bold ' + (halfH * 0.15) + 'px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText('✓', w * 0.65, halfH + halfH * 0.4);
-      
-      // Label
-      ctx.fillStyle = 'rgba(245,240,232,0.6)';
-      ctx.font = `${halfH * 0.06}px Arial`;
+      ctx.fillStyle = 'rgba(245,240,232,0.5)'; ctx.font = (halfH * 0.055) + 'px Arial';
       ctx.fillText(bottomText || '$OOWW', w * 0.65, halfH + halfH * 0.65);
-      
-      // Bottom text overlay
-      drawText(ctx, bottomText || '$OOWW', w * 0.5, h - 20, textColor, w * 0.04, w * 0.9);
+      drawText(ctx, bottomText || '$OOWW', w * 0.5, h - 16, textColor, w * 0.035, w * 0.85);
     }
 
-    // Draw single panel meme (Gigachad, Change My Mind, etc.)
-    function drawSingleMeme(canvas, topText, bottomText, textColor, emoji) {
-      const w = canvas.width;
-      const h = canvas.height;
-      
-      ctx.fillStyle = '#0a0a0f';
-      ctx.fillRect(0, 0, w, h);
-      
-      // Background panel
+    function drawSingleMeme(canvas, topText, bottomText, textColor) {
+      const w = canvas.width, h = canvas.height;
+      ctx.fillStyle = '#0a0a0f'; ctx.fillRect(0, 0, w, h);
       ctx.fillStyle = '#1a1620';
-      const margin = w * 0.08;
-      const panelH = h * 0.55;
-      const panelY = h * 0.15;
-      ctx.beginPath();
-      ctx.roundRect(margin, panelY, w - margin * 2, panelH, 20);
-      ctx.fill();
-      
-      // OOWW character
+      const margin = w * 0.08, panelH = h * 0.55, panelY = h * 0.15;
+      ctx.beginPath(); ctx.roundRect(margin, panelY, w - margin * 2, panelH, 20); ctx.fill();
       drawOOWWCharacter(ctx, w * 0.5, panelY + panelH * 0.5, panelH * 0.5);
-      
-      // Bottom text
-      drawText(ctx, topText || 'TOP TEXT', w * 0.5, h * 0.08, textColor, w * 0.045, w * 0.85);
-      
-      if (bottomText) {
-        drawText(ctx, bottomText, w * 0.5, h * 0.92, textColor, w * 0.04, w * 0.85);
-      }
+      drawText(ctx, topText || 'TOP TEXT', w * 0.5, h * 0.07, textColor, w * 0.04, w * 0.85);
+      if (bottomText) drawText(ctx, bottomText, w * 0.5, h * 0.92, textColor, w * 0.035, w * 0.85);
     }
 
-    // Draw distracted boyfriend
     function drawDistractedMeme(canvas, topText, bottomText, textColor) {
-      const w = canvas.width;
-      const h = canvas.height;
-      
-      ctx.fillStyle = '#0a0a0f';
-      ctx.fillRect(0, 0, w, h);
-      
-      // Three panel layout
-      const panelW = w / 3;
-      
-      // Panel 1: Girlfriend (angry)
-      ctx.fillStyle = '#1a1620';
-      ctx.fillRect(0, 0, panelW, h);
+      const w = canvas.width, h = canvas.height, panelW = w / 3;
+      ctx.fillStyle = '#0a0a0f'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#1a1620'; ctx.fillRect(0, 0, panelW, h);
       ctx.fillStyle = '#2a2a3a';
-      ctx.beginPath();
-      ctx.arc(panelW * 0.5, h * 0.3, panelW * 0.12, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(panelW * 0.5, h * 0.3, panelW * 0.12, 0, Math.PI * 2); ctx.fill();
       ctx.fillRect(panelW * 0.3, h * 0.42, panelW * 0.4, h * 0.4);
-      
-      // Panel 2: Boyfriend (looking back) - OOWW
-      ctx.fillStyle = '#16201a';
-      ctx.fillRect(panelW, 0, panelW, h);
+      ctx.fillStyle = '#16201a'; ctx.fillRect(panelW, 0, panelW, h);
       drawOOWWCharacter(ctx, panelW * 1.5, h * 0.45, h * 0.4);
-      
-      // Arrow showing he's looking right
-      ctx.strokeStyle = '#e8922e';
-      ctx.lineWidth = 3;
-      ctx.setLineDash([5, 5]);
-      ctx.beginPath();
-      ctx.moveTo(panelW * 1.2, h * 0.3);
-      ctx.lineTo(panelW * 1.8, h * 0.3);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      
-      // Panel 3: Other girl - pumped with SOL
-      ctx.fillStyle = '#201a16';
-      ctx.fillRect(panelW * 2, 0, panelW, h);
+      ctx.strokeStyle = '#e8922e'; ctx.lineWidth = 3; ctx.setLineDash([5, 5]);
+      ctx.beginPath(); ctx.moveTo(panelW * 1.2, h * 0.3); ctx.lineTo(panelW * 1.8, h * 0.3); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = '#201a16'; ctx.fillRect(panelW * 2, 0, panelW, h);
       ctx.fillStyle = '#2a2a3a';
-      ctx.beginPath();
-      ctx.arc(panelW * 2.5, h * 0.3, panelW * 0.12, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(panelW * 2.5, h * 0.3, panelW * 0.12, 0, Math.PI * 2); ctx.fill();
       ctx.fillRect(panelW * 2.3, h * 0.42, panelW * 0.4, h * 0.4);
-      ctx.fillStyle = '#e8922e';
-      ctx.font = `bold ${panelW * 0.1}px Arial`;
-      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e8922e'; ctx.font = 'bold ' + (panelW * 0.1) + 'px Arial'; ctx.textAlign = 'center';
       ctx.fillText('SOL', panelW * 2.5, h * 0.3);
-      
-      // Labels
-      ctx.fillStyle = 'rgba(245,240,232,0.6)';
-      ctx.font = `${panelW * 0.06}px Arial`;
-      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(245,240,232,0.5)'; ctx.font = (panelW * 0.055) + 'px Arial';
       ctx.fillText(topText || 'OTHER COINS', panelW * 0.5, h * 0.88);
       ctx.fillText('OOWW', panelW * 1.5, h * 0.88);
       ctx.fillText(bottomText || 'SOLANA', panelW * 2.5, h * 0.88);
     }
 
-    // Draw bell curve
     function drawBellCurveMeme(canvas, topText, bottomText, textColor) {
-      const w = canvas.width;
-      const h = canvas.height;
-      
-      ctx.fillStyle = '#0a0a0f';
-      ctx.fillRect(0, 0, w, h);
-      
-      // Three panels
-      const panelH = h / 3;
-      
-      // Left: Low IQ
-      ctx.fillStyle = '#1a1620';
-      ctx.fillRect(0, 0, w, panelH);
-      ctx.fillStyle = 'rgba(245,240,232,0.05)';
-      ctx.font = `${panelH * 0.12}px Arial`;
-      ctx.textAlign = 'left';
+      const w = canvas.width, h = canvas.height, panelH = h / 3;
+      ctx.fillStyle = '#0a0a0f'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#1a1620'; ctx.fillRect(0, 0, w, panelH);
+      ctx.fillStyle = 'rgba(245,240,232,0.04)'; ctx.font = (panelH * 0.12) + 'px Arial'; ctx.textAlign = 'left';
       ctx.fillText('🧠 Low IQ', w * 0.03, panelH * 0.3);
-      ctx.fillStyle = 'rgba(245,240,232,0.7)';
-      ctx.font = `${panelH * 0.08}px Arial`;
+      ctx.fillStyle = 'rgba(245,240,232,0.6)'; ctx.font = (panelH * 0.07) + 'px Arial';
       ctx.fillText(topText || 'BUY HIGH', w * 0.03, panelH * 0.6);
-      
-      // Middle: Average IQ (peak of bell curve - the worst)
-      ctx.fillStyle = '#201a10';
-      ctx.fillRect(0, panelH, w, panelH);
-      ctx.fillStyle = 'rgba(245,240,232,0.05)';
-      ctx.font = `${panelH * 0.12}px Arial`;
-      ctx.textAlign = 'left';
+      ctx.fillStyle = '#201a10'; ctx.fillRect(0, panelH, w, panelH);
+      ctx.fillStyle = 'rgba(245,240,232,0.04)'; ctx.font = (panelH * 0.12) + 'px Arial';
       ctx.fillText('🧠 Average IQ', w * 0.03, panelH + panelH * 0.3);
-      ctx.fillStyle = 'rgba(245,240,232,0.7)';
-      ctx.font = `${panelH * 0.08}px Arial`;
+      ctx.fillStyle = 'rgba(245,240,232,0.6)'; ctx.font = (panelH * 0.07) + 'px Arial';
       ctx.fillText('"DO YOUR OWN RESEARCH"', w * 0.03, panelH + panelH * 0.6);
-      
-      // Right: High IQ
-      ctx.fillStyle = '#0e2016';
-      ctx.fillRect(0, panelH * 2, w, panelH);
-      ctx.fillStyle = 'rgba(245,240,232,0.05)';
-      ctx.font = `${panelH * 0.12}px Arial`;
-      ctx.textAlign = 'left';
+      ctx.fillStyle = '#0e2016'; ctx.fillRect(0, panelH * 2, w, panelH);
+      ctx.fillStyle = 'rgba(245,240,232,0.04)'; ctx.font = (panelH * 0.12) + 'px Arial';
       ctx.fillText('🧠 High IQ', w * 0.03, panelH * 2 + panelH * 0.3);
-      
-      // OOWW character on the right side
       drawOOWWCharacter(ctx, w * 0.72, panelH * 2 + panelH * 0.55, panelH * 0.4);
-      
-      ctx.fillStyle = 'rgba(245,240,232,0.7)';
-      ctx.font = `${panelH * 0.08}px Arial`;
+      ctx.fillStyle = 'rgba(245,240,232,0.6)'; ctx.font = (panelH * 0.07) + 'px Arial';
       ctx.fillText(bottomText || 'JUST OOWW', w * 0.03, panelH * 2 + panelH * 0.6);
     }
 
-    // Draw Gru Plan
-    function drawGruPlanMeme(canvas, text, textColor) {
-      const w = canvas.width;
-      const h = canvas.height;
-      
-      ctx.fillStyle = '#0a0a0f';
-      ctx.fillRect(0, 0, w, h);
-      
-      // 4 panels grid
-      const cols = 2;
-      const rows = 2;
-      const pw = w / cols;
-      const ph = h / rows;
-      
-      const texts = [
-        '📈 Buy $OOWW', 
-        '📱 Shitpost on X',
-        '🐋 Community grows',
-        bottomText || '🚀 TO THE MOON'
-      ];
-      
+    function drawGruPlanMeme(canvas, topText, bottomText, textColor) {
+      const w = canvas.width, h = canvas.height, cols = 2, rows = 2, pw = w / cols, ph = h / rows;
+      ctx.fillStyle = '#0a0a0f'; ctx.fillRect(0, 0, w, h);
+      const texts = ['📈 Buy $OOWW', '📱 Shitpost on X', '🐋 Community grows', bottomText || '🚀 TO THE MOON'];
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          const idx = r * cols + c;
-          const px = c * pw;
-          const py = r * ph;
-          
+          const idx = r * cols + c, px = c * pw, py = r * ph;
           ctx.fillStyle = idx % 2 === 0 ? '#1a1620' : '#16201a';
           ctx.fillRect(px, py, pw, ph);
-          
-          ctx.fillStyle = 'rgba(245,240,232,0.05)';
-          ctx.font = `bold ${ph * 0.1}px Arial`;
-          ctx.textAlign = 'center';
-          
-          if (idx === 0) {
-            ctx.fillText(texts[0], px + pw * 0.5, py + ph * 0.2);
-            ctx.fillStyle = '#e8922e';
-            ctx.font = `${ph * 0.2}px Arial`;
-            ctx.fillText('🤔', px + pw * 0.5, py + ph * 0.55);
-          } else if (idx === 1) {
-            ctx.fillStyle = 'rgba(245,240,232,0.7)';
-            ctx.fillText(texts[1], px + pw * 0.5, py + ph * 0.2);
-            ctx.font = `${ph * 0.2}px Arial`;
-            ctx.fillText('😏', px + pw * 0.5, py + ph * 0.55);
-          } else if (idx === 2) {
-            ctx.fillStyle = 'rgba(245,240,232,0.7)';
-            ctx.fillText(texts[2], px + pw * 0.5, py + ph * 0.2);
-            drawOOWWCharacter(ctx, px + pw * 0.5, py + ph * 0.55, ph * 0.35);
-          } else if (idx === 3) {
-            ctx.fillStyle = 'rgba(245,240,232,0.7)';
-            ctx.fillText(texts[3], px + pw * 0.5, py + ph * 0.2);
-            ctx.fillStyle = '#e8922e';
-            ctx.font = `${ph * 0.2}px Arial`;
-            ctx.fillText('🚀🌙', px + pw * 0.5, py + ph * 0.55);
-          }
+          ctx.fillStyle = 'rgba(245,240,232,0.04)'; ctx.font = 'bold ' + (ph * 0.09) + 'px Arial'; ctx.textAlign = 'center';
+          if (idx === 0) { ctx.fillText(texts[0], px + pw * 0.5, py + ph * 0.2); ctx.fillStyle = '#e8922e'; ctx.font = (ph * 0.18) + 'px Arial'; ctx.fillText('🤔', px + pw * 0.5, py + ph * 0.55); }
+          else if (idx === 1) { ctx.fillStyle = 'rgba(245,240,232,0.6)'; ctx.fillText(texts[1], px + pw * 0.5, py + ph * 0.2); ctx.font = (ph * 0.18) + 'px Arial'; ctx.fillText('😏', px + pw * 0.5, py + ph * 0.55); }
+          else if (idx === 2) { ctx.fillStyle = 'rgba(245,240,232,0.6)'; ctx.fillText(texts[2], px + pw * 0.5, py + ph * 0.2); drawOOWWCharacter(ctx, px + pw * 0.5, py + ph * 0.55, ph * 0.35); }
+          else if (idx === 3) { ctx.fillStyle = 'rgba(245,240,232,0.6)'; ctx.fillText(texts[3], px + pw * 0.5, py + ph * 0.2); ctx.fillStyle = '#e8922e'; ctx.font = (ph * 0.18) + 'px Arial'; ctx.fillText('🚀🌙', px + pw * 0.5, py + ph * 0.55); }
         }
       }
     }
 
-    // Helper: draw outlined text
     function drawText(ctx, text, x, y, color, fontSize, maxWidth) {
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.font = `bold ${fontSize}px Oswald, Impact, Arial`;
-      
-      // Calculate font size to fit
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       let fs = fontSize * 1;
-      ctx.font = `bold ${fs}px Oswald, Impact, Arial`;
-      while (ctx.measureText(text).width > (maxWidth || ctx.canvas.width * 0.9) && fs > 10) {
-        fs -= 1;
-        ctx.font = `bold ${fs}px Oswald, Impact, Arial`;
-      }
-      
-      // Outline
-      ctx.strokeStyle = '#000000';
-      ctx.lineWidth = fs * 0.08 + 4;
-      ctx.lineJoin = 'round';
+      ctx.font = 'bold ' + fs + 'px Oswald, Impact, Arial';
+      while (ctx.measureText(text).width > (maxWidth || ctx.canvas.width * 0.88) && fs > 10) { fs -= 1; ctx.font = 'bold ' + fs + 'px Oswald, Impact, Arial'; }
+      ctx.strokeStyle = '#000000'; ctx.lineWidth = fs * 0.08 + 3; ctx.lineJoin = 'round';
       ctx.strokeText(text, x, y);
-      
-      // Fill
-      ctx.fillStyle = color || '#ffffff';
-      ctx.fillText(text, x, y);
+      ctx.fillStyle = color || '#ffffff'; ctx.fillText(text, x, y);
     }
 
-    // ============ GENERATE BUTTON ============
-    generateBtn.addEventListener('click', generateMeme);
-
+    // ============ GENERATE ============
     function generateMeme() {
       const topText = document.getElementById('topText').value || 'TOP TEXT';
       const bottomText = document.getElementById('bottomText').value || '';
-      
+
       if (!selectedTemplate) {
-        // Auto-select first template if none selected
         const firstCard = document.querySelector('.template-card');
-        if (firstCard) {
-          firstCard.click();
-        } else {
-          generateBtn.style.background = 'linear-gradient(135deg, #ff4444, #cc3333)';
-          setTimeout(() => {
-            generateBtn.style.background = 'linear-gradient(135deg, #e8922e, #ff6b35)';
-          }, 1500);
-          return;
-        }
+        if (firstCard) { firstCard.click(); } else return;
       }
 
-      // Set canvas size
-      let cw, ch;
-      switch(memeSize) {
-        case 'wide': cw = 800; ch = 450; break;
-        case 'square': cw = 600; ch = 600; break;
-        default: cw = 600; ch = 600;
-      }
-      
-      // For wide templates, adjust
-      if (memeSize === 'wide' && selectedTemplate === 'drake') { cw = 800; ch = 500; }
-      if (memeSize === 'wide' && selectedTemplate === 'distracted') { cw = 900; ch = 400; }
-      if (memeSize === 'standard' && selectedTemplate === 'drake') { cw = 600; ch = 600; }
-      
-      canvas.width = cw;
-      canvas.height = ch;
-      
-      // Generate based on template
+      let cw = 600, ch = 600;
+      if (memeSize === 'wide') { cw = 800; ch = 450; }
+      if (memeSize === 'square') { cw = 600; ch = 600; }
+      if (selectedTemplate === 'drake' && memeSize === 'wide') { cw = 800; ch = 500; }
+      if (selectedTemplate === 'distracted' && memeSize === 'wide') { cw = 900; ch = 400; }
+      if (selectedTemplate === 'drake') { cw = 600; ch = 600; }
+
+      canvas.width = cw; canvas.height = ch;
+
       switch(selectedTemplate) {
-        case 'drake':
-          drawDrakeMeme(canvas, topText, bottomText, selectedColor);
-          break;
-        case 'gigachad':
-        case 'change-my-mind':
-        case 'this-is-fine':
-        case 'girl-math':
-        case 'disaster-girl':
-        case 'boardroom':
-          drawSingleMeme(canvas, topText, bottomText, selectedColor, '');
-          break;
-        case 'distracted':
-          drawDistractedMeme(canvas, topText, bottomText, selectedColor);
-          break;
-        case 'bell-curve':
-          drawBellCurveMeme(canvas, topText, bottomText, selectedColor);
-          break;
-        case 'gru-plan':
-          drawGruPlanMeme(canvas, topText, bottomText, selectedColor);
-          break;
-        case 'chad-vs-virgin':
-        case 'always-has-been':
-          drawSingleMeme(canvas, topText, bottomText, selectedColor, '');
-          break;
-        default:
-          drawSingleMeme(canvas, topText, bottomText, selectedColor, '');
+        case 'drake': drawDrakeMeme(canvas, topText, bottomText, selectedColor); break;
+        case 'gigachad': case 'change-my-mind': case 'this-is-fine': case 'girl-math': case 'disaster-girl': case 'boardroom': case 'chad-vs-virgin': case 'always-has-been':
+          drawSingleMeme(canvas, topText, bottomText, selectedColor); break;
+        case 'distracted': drawDistractedMeme(canvas, topText, bottomText, selectedColor); break;
+        case 'bell-curve': drawBellCurveMeme(canvas, topText, bottomText, selectedColor); break;
+        case 'gru-plan': drawGruPlanMeme(canvas, topText, bottomText, selectedColor); break;
+        default: drawSingleMeme(canvas, topText, bottomText, selectedColor);
       }
-      
-      // Show canvas, hide placeholder
+
+      currentMemeDataUrl = canvas.toDataURL('image/png');
+
       placeholder.style.display = 'none';
       canvas.classList.add('visible');
-      downloadBtn.classList.add('visible');
+      shareRow.style.display = 'flex';
+
+      // Increment counter
+      memeCount++;
+      localStorage.setItem('oowwMemeCount', memeCount);
+      document.getElementById('memeCount').textContent = memeCount;
+      document.getElementById('memeCounter').style.display = 'flex';
     }
 
-    // ============ DOWNLOAD ============
-    downloadBtn.addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.download = `ooww-meme-${selectedTemplate || 'custom'}-${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
+    // ============ RANDOM MEME ============
+    document.getElementById('randomBtn').addEventListener('click', () => {
+      const randTemplate = TEMPLATES[Math.floor(Math.random() * TEMPLATES.length)];
+      const cards = document.querySelectorAll('.template-card');
+      cards.forEach((c, i) => { if (TEMPLATES[i].id === randTemplate.id) c.click(); });
+
+      const randTop = [
+        'I KEEP IT SIMPLE', 'JUST OOWW IT', 'NO BULLSHIT', 'HYBRID ENERGY',
+        'STRENGTH. SPEED.', 'MOO DENG STYLE', 'PUMP IT', 'TO THE MOON',
+        'MOO DENG', 'PEPE WHO?', 'TAX 0%', '1B SUPPLY'
+      ][Math.floor(Math.random() * 12)];
+
+      const randBottom = [
+        'STRENGTH. SPEED. BALANCE.', 'THREE LEGENDS. ONE BEAST.',
+        'POWER FUSION', 'NO FAKE PROMISES', 'JUST VIRAL ENERGY',
+        'OOWW RESPONSIBLY', 'HYBRID SEASON', 'THE TRENCHES NEED A RUNNER'
+      ][Math.floor(Math.random() * 8)];
+
+      document.getElementById('topText').value = randTop;
+      document.getElementById('bottomText').value = randBottom;
+
+      const colors = ['#ffffff', '#ffdd00', '#e8922e', '#ff4444', '#44ff44', '#4488ff'];
+      const randColor = colors[Math.floor(Math.random() * colors.length)];
+      document.querySelectorAll('.color-option').forEach(el => {
+        el.classList.remove('selected');
+        if (el.dataset.color === randColor) el.classList.add('selected');
+      });
+      selectedColor = randColor;
+
+      generateMeme();
     });
 
-    // ============ AI STATUS ============
-    document.querySelector('.ai-generate-btn').addEventListener('click', () => {
-      const status = document.getElementById('aiStatus');
-      status.classList.add('visible');
+    // ============ DOWNLOAD ============
+    document.getElementById('downloadShareBtn').addEventListener('click', () => {
+      if (!currentMemeDataUrl) return;
+      const link = document.createElement('a');
+      link.download = 'ooww-meme-' + Date.now() + '.png';
+      link.href = currentMemeDataUrl;
+      link.click();
+      savedToast.classList.add('visible');
+      setTimeout(() => savedToast.classList.remove('visible'), 2500);
     });
+
+    // ============ SHARE ON X ============
+    document.getElementById('shareXBtn').addEventListener('click', () => {
+      const text = encodeURIComponent('Check out this OOWW meme I just created! 🔥 #OOWW #Crypto #Memes');
+      const url = encodeURIComponent('https://ooww.fun');
+      window.open('https://twitter.com/intent/tweet?text=' + text + '&url=' + url, '_blank');
+    });
+
+    // ============ COPY IMAGE ============
+    document.getElementById('copyImageBtn').addEventListener('click', async () => {
+      if (!currentMemeDataUrl) return;
+      try {
+        const blob = await (await fetch(currentMemeDataUrl)).blob();
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]);
+        savedToast.textContent = '📋 Image copied to clipboard!';
+        savedToast.classList.add('visible');
+        setTimeout(() => { savedToast.classList.remove('visible'); savedToast.textContent = '✅ Meme Saved!'; }, 2500);
+      } catch(e) {
+        const link = document.createElement('a');
+        link.download = 'ooww-meme-' + Date.now() + '.png';
+        link.href = currentMemeDataUrl;
+        link.click();
+      }
+    });
+
+    // ============ COPY CAPTION ============
+    document.getElementById('copyCaptionBtn').addEventListener('click', () => {
+      const top = document.getElementById('topText').value || '';
+      const bottom = document.getElementById('bottomText').value || '';
+      const caption = (top + (bottom ? '\n\n' + bottom : '')).trim();
+      if (caption) {
+        navigator.clipboard.writeText(caption + '\n\n#OOWW #Crypto').catch(() => {});
+        savedToast.textContent = '✏️ Caption copied!';
+        savedToast.classList.add('visible');
+        setTimeout(() => { savedToast.classList.remove('visible'); savedToast.textContent = '✅ Meme Saved!'; }, 2500);
+      }
+    });
+
+    // ============ GENERATE BTN ============
+    generateBtn.addEventListener('click', generateMeme);
   </script>
 </body>
 </html>
