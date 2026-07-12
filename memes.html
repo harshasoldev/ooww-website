@@ -569,20 +569,21 @@
   <section>
     <div class="section-container">
       <div class="ai-section">
-        <h3>🔬 AI Meme Lab <span class="text-gradient">(Coming Soon)</span></h3>
-        <p class="ai-sub">Describe literally any scene. AI generates an OOWW version instantly.</p>
+        <h3>🔬 AI Meme Lab <span class="text-gradient">LIVE 🔥</span></h3>
+        <p class="ai-sub">Describe literally any scene. AI generates an OOWW version in ~20 seconds.</p>
         <div class="ai-examples" id="aiExamples">
-          <span class="ai-example-tag">"OOWW negotiating with Satoshi"</span>
-          <span class="ai-example-tag">"OOWW on Wall Street"</span>
-          <span class="ai-example-tag">"OOWW in Breaking Bad"</span>
-          <span class="ai-example-tag">"OOWW riding a rocket to $1"</span>
-          <span class="ai-example-tag">"OOWW as a gladiator"</span>
+          <span class="ai-example-tag" data-prompt="OOWW negotiating with Satoshi Nakamoto">"OOWW negotiating with Satoshi"</span>
+          <span class="ai-example-tag" data-prompt="OOWW as a Wall Street stockbroker, yelling at a trading floor">"OOWW on Wall Street"</span>
+          <span class="ai-example-tag" data-prompt="OOWW as Walter White in Breaking Bad, wearing a yellow hazmat suit">"OOWW in Breaking Bad"</span>
+          <span class="ai-example-tag" data-prompt="OOWW riding a rocket ship to the moon, epic pose">"OOWW riding a rocket to $1"</span>
+          <span class="ai-example-tag" data-prompt="OOWW as a Roman gladiator in the Colosseum, epic battle">"OOWW as a gladiator"</span>
         </div>
         <div class="ai-input">
-          <textarea id="aiPrompt" placeholder='Describe any scene — "OOWW accepting an Oscar" or "OOWW fighting a bear"...' disabled></textarea>
-          <button class="ai-generate-btn" disabled>🧪 Generate</button>
+          <textarea id="aiPrompt" placeholder='Describe any scene — "OOWW accepting an Oscar" or "OOWW fighting a bear"...'></textarea>
+          <button class="ai-generate-btn" id="aiGenerateBtn">🧪 Generate</button>
         </div>
-        <p style="color:rgba(245,240,232,0.25);font-size:0.75rem;margin-top:1rem">AI generation requires a FAL API key. Coming soon with the $OOWW launch!</p>
+        <div id="aiStatus" style="margin-top:0.8rem;font-size:0.8rem;color:rgba(245,240,232,0.4);display:none">⏳ Generating... (~20 seconds)</div>
+        <div id="aiError" style="margin-top:0.5rem;font-size:0.8rem;color:#ff6666;display:none"></div>
       </div>
     </div>
   </section>
@@ -1195,6 +1196,90 @@
 
     // ============ GENERATE BTN ============
     generateBtn.addEventListener('click', generateMeme);
+
+    // ============ AI MEME LAB ============
+    const AI_API_URL = 'https://ai.webtoolsync.com/api/generate-meme';
+    const aiGenerateBtn = document.getElementById('aiGenerateBtn');
+    const aiPrompt = document.getElementById('aiPrompt');
+    const aiStatus = document.getElementById('aiStatus');
+    const aiError = document.getElementById('aiError');
+
+    // Click example tags to fill prompt
+    document.querySelectorAll('.ai-example-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        aiPrompt.value = tag.dataset.prompt;
+        aiPrompt.focus();
+      });
+    });
+
+    aiGenerateBtn.addEventListener('click', async () => {
+      const prompt = aiPrompt.value.trim();
+      if (!prompt) {
+        aiError.textContent = '⚠️ Please describe the scene first!';
+        aiError.style.display = 'block';
+        setTimeout(() => aiError.style.display = 'none', 3000);
+        return;
+      }
+
+      aiGenerateBtn.disabled = true;
+      aiGenerateBtn.textContent = '⏳ Generating...';
+      aiStatus.style.display = 'block';
+      aiError.style.display = 'none';
+
+      try {
+        const resp = await fetch(AI_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt, style: 'cinematic' }),
+        });
+
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.error || 'Generation failed');
+        }
+
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+
+        // Show in the meme output area
+        const img = new Image();
+        img.onload = () => {
+          // Draw AI image onto canvas
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+          currentMemeDataUrl = canvas.toDataURL('image/png');
+          
+          placeholder.style.display = 'none';
+          canvas.classList.add('visible');
+          shareRow.style.display = 'flex';
+          
+          aiStatus.textContent = '✅ AI Meme generated!';
+          setTimeout(() => { aiStatus.textContent = '⏳ Generating... (~20 seconds)'; aiStatus.style.display = 'none'; }, 3000);
+          
+          memeCount++;
+          localStorage.setItem('oowwMemeCount', memeCount);
+          document.getElementById('memeCount').textContent = memeCount;
+          document.getElementById('memeCounter').style.display = 'flex';
+        };
+        img.src = url;
+
+      } catch (err) {
+        aiError.textContent = '❌ ' + err.message;
+        aiError.style.display = 'block';
+      } finally {
+        aiGenerateBtn.disabled = false;
+        aiGenerateBtn.textContent = '🧪 Generate';
+      }
+    });
+
+    // Submit on Enter (Shift+Enter for newline)
+    aiPrompt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        aiGenerateBtn.click();
+      }
+    });
   </script>
 </body>
 </html>
