@@ -655,18 +655,18 @@
 
     // ============ TEMPLATE DEFINITIONS ============
     const TEMPLATES = [
-      { id: 'drake', name: 'Drake', emoji: '👎👍', formats: 'top/bottom', type: 'drake', difficulty: 'easy', trending: 'hot', desc: 'Drake rejects then approves' },
-      { id: 'gigachad', name: 'Gigachad', emoji: '🧔', formats: 'top/bottom', type: 'single', difficulty: 'easy', trending: 'fire', desc: 'The ultimate gigachad flex' },
-      { id: 'bell-curve', name: 'Bell Curve', emoji: '📊', formats: '3 panels', type: 'bell-curve', difficulty: 'viral', trending: null, desc: 'Intelligence distribution meme' },
-      { id: 'change-my-mind', name: 'Change My Mind', emoji: '🧠', formats: 'top text', type: 'single', difficulty: 'easy', trending: null, desc: 'Steven Crowder at the table' },
-      { id: 'this-is-fine', name: 'This Is Fine', emoji: '🔥☕', formats: 'top text', type: 'single', difficulty: 'easy', trending: 'hot', desc: 'Everything is fine (it\'s not)' },
-      { id: 'distracted', name: 'Distracted BF', emoji: '😍', formats: '3 panels', type: 'distracted', difficulty: 'viral', trending: 'fire', desc: 'He keeps looking back' },
-      { id: 'girl-math', name: 'Girl Math', emoji: '🧮', formats: 'top/bottom', type: 'single', difficulty: 'viral', trending: 'new', desc: 'Flawless crypto logic' },
-      { id: 'chad-vs-virgin', name: 'Chad vs Virgin', emoji: '⚔️', formats: '2 panels', type: 'split', difficulty: 'viral', trending: null, desc: 'OOWW vs the competition' },
-      { id: 'disaster-girl', name: 'Disaster Girl', emoji: '🔥😏', formats: 'top text', type: 'single', difficulty: 'legendary', trending: null, desc: 'Smiling at the chaos' },
-      { id: 'always-has-been', name: 'Always Has Been', emoji: '🧑‍🚀🔫', formats: '2 panels', type: 'split', difficulty: 'legendary', trending: null, desc: 'The friend was the memecoin' },
-      { id: 'boardroom', name: 'Boardroom', emoji: '🏢', formats: 'top text', type: 'single', difficulty: 'easy', trending: 'new', desc: 'Pointing at the chart' },
-      { id: 'gru-plan', name: 'Gru Plan', emoji: '🧑‍🔬', formats: '4 panels', type: 'gru-plan', difficulty: 'legendary', trending: null, desc: 'The master plan unfolds' }
+      { id: 'drake', name: 'Drake', thumb: 'templates/drake.jpg', formats: 'top/bottom', type: 'drake', difficulty: 'easy', trending: 'hot' },
+      { id: 'gigachad', name: 'Gigachad', thumb: null, formats: 'top/bottom', type: 'single', difficulty: 'easy', trending: 'fire' },
+      { id: 'bell-curve', name: 'Bell Curve', thumb: null, formats: '3 panels', type: 'bell-curve', difficulty: 'viral', trending: null },
+      { id: 'change-my-mind', name: 'Change My Mind', thumb: 'templates/change-my-mind.jpg', formats: 'top text', type: 'single', difficulty: 'easy', trending: null },
+      { id: 'this-is-fine', name: 'This Is Fine', thumb: 'templates/this-is-fine.jpg', formats: 'top text', type: 'single', difficulty: 'easy', trending: 'hot' },
+      { id: 'distracted', name: 'Distracted BF', thumb: 'templates/distracted.jpg', formats: '3 panels', type: 'distracted', difficulty: 'viral', trending: 'fire' },
+      { id: 'girl-math', name: 'Girl Math', thumb: null, formats: 'top/bottom', type: 'single', difficulty: 'viral', trending: 'new' },
+      { id: 'chad-vs-virgin', name: 'Chad vs Virgin', thumb: null, formats: '2 panels', type: 'split', difficulty: 'viral', trending: null },
+      { id: 'disaster-girl', name: 'Disaster Girl', thumb: 'templates/disaster-girl.jpg', formats: 'top text', type: 'single', difficulty: 'legendary', trending: null },
+      { id: 'always-has-been', name: 'Always Has Been', thumb: null, formats: '2 panels', type: 'split', difficulty: 'legendary', trending: null },
+      { id: 'boardroom', name: 'Boardroom', thumb: null, formats: 'top text', type: 'single', difficulty: 'easy', trending: 'new' },
+      { id: 'gru-plan', name: 'Gru Plan', thumb: 'templates/gru-plan.jpg', formats: '4 panels', type: 'gru-plan', difficulty: 'legendary', trending: null }
     ];
 
     // ============ STATE ============
@@ -682,82 +682,92 @@
       liveUpdate();
     }
 
-    // ============ THUMBNAIL RENDERER ============
-    function renderThumbnail(canvas, template) {
+    // ============ RENDER TEMPLATES ============
+    const templateGrid = document.getElementById('templateGrid');
+
+    // Draw a proper-looking meme template thumbnail on canvas (for templates without real images)
+    function drawTemplateThumbnail(canvas, template) {
       const ctx = canvas.getContext('2d');
       const w = 300, h = 225;
       canvas.width = w; canvas.height = h;
 
-      ctx.fillStyle = '#13131a';
+      // Dark background
+      ctx.fillStyle = '#1a1a24';
       ctx.fillRect(0, 0, w, h);
 
-      // Draw mini OOWW character for all thumbnails
-      ctx.save();
-      ctx.scale(0.35, 0.35);
-      drawOOWWCharacter(ctx, w/0.35 * 0.45, h/0.35 * 0.55, h/0.35 * 0.5);
-      ctx.restore();
-
-      // Template-specific decorations
-      ctx.fillStyle = 'rgba(245,240,232,0.04)';
-      ctx.font = '12px Arial';
-      ctx.textAlign = 'center';
-
-      if (template.id === 'drake') {
-        // Red X on left
-        ctx.fillStyle = 'rgba(255,68,68,0.15)';
-        ctx.fillRect(10, 20, w*0.15, h*0.3);
-        ctx.fillStyle = 'rgba(255,68,68,0.5)';
-        ctx.font = 'bold 28px Arial';
-        ctx.fillText('✕', w*0.12, 55);
-        // Green check on right
-        ctx.fillStyle = 'rgba(68,255,68,0.15)';
-        ctx.fillRect(w*0.72, 20, w*0.15, h*0.3);
-        ctx.fillStyle = 'rgba(68,255,68,0.5)';
-        ctx.font = 'bold 28px Arial';
-        ctx.fillText('✓', w*0.8, 55);
-      } else if (template.id === 'distracted') {
-        ctx.fillStyle = 'rgba(232,146,46,0.1)';
-        ctx.font = '20px Arial';
-        ctx.fillText('😍 ➡️', w*0.3, 50);
-        ctx.fillText('💰', w*0.7, 50);
+      if (template.id === 'gigachad') {
+        // Single panel with chad silhouette
+        ctx.fillStyle = '#2a2a3a';
+        ctx.beginPath(); ctx.arc(w*0.5, h*0.3, 35, 0, Math.PI*2); ctx.fill();
+        ctx.fillRect(w*0.35, h*0.32, w*0.3, h*0.45);
+        ctx.fillStyle = '#e8922e'; ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
+        ctx.fillText('GIGACHAD', w*0.5, h-15);
       } else if (template.id === 'bell-curve') {
-        ctx.strokeStyle = 'rgba(232,146,46,0.3)';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.moveTo(30, h-30);
-        ctx.quadraticCurveTo(w*0.2, 30, w*0.5, h*0.2);
-        ctx.quadraticCurveTo(w*0.8, 30, w-30, h-30);
+        // Bell curve chart
+        ctx.strokeStyle = '#e8922e'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(20, h-30);
+        ctx.quadraticCurveTo(w*0.2, 20, w*0.5, 35);
+        ctx.quadraticCurveTo(w*0.8, 20, w-20, h-30);
         ctx.stroke();
-      } else if (template.id === 'gru-plan') {
-        ctx.strokeStyle = 'rgba(232,146,46,0.2)';
-        ctx.lineWidth = 1;
-        ctx.strokeRect(15, 10, w*0.42, h*0.4);
-        ctx.strokeRect(w*0.52, 10, w*0.42, h*0.4);
-        ctx.strokeRect(15, h*0.52, w*0.42, h*0.4);
-        ctx.strokeRect(w*0.52, h*0.52, w*0.42, h*0.4);
-      } else if (template.id === 'this-is-fine') {
         ctx.fillStyle = 'rgba(232,146,46,0.08)';
-        ctx.beginPath();
-        ctx.arc(w*0.7, 50, 20, 0, Math.PI*2);
         ctx.fill();
-        ctx.fillStyle = 'rgba(232,146,46,0.1)';
-        ctx.font = '18px Arial';
-        ctx.fillText('🔥 ☕', w*0.7, 55);
-      } else if (template.id === 'change-my-mind') {
-        ctx.fillStyle = 'rgba(245,240,232,0.06)';
-        ctx.font = 'bold 10px Arial';
-        ctx.fillText('CHANGE', w*0.5, 170);
-        ctx.fillText('MY MIND', w*0.5, 185);
+        ctx.fillStyle = 'rgba(245,240,232,0.3)'; ctx.font = '9px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Low IQ    Average IQ    High IQ', w*0.5, h-8);
+      } else if (template.id === 'girl-math') {
+        // Calculator / math theme
+        ctx.fillStyle = '#2a1a3a'; ctx.beginPath(); ctx.roundRect(w*0.15, 15, w*0.7, h*0.5, 8); ctx.fill();
+        ctx.fillStyle = 'rgba(245,240,232,0.3)'; ctx.font = 'bold 20px Arial'; ctx.textAlign = 'center';
+        ctx.fillText('🧮', w*0.5, h*0.32);
+        ctx.fillStyle = 'rgba(245,240,232,0.3)'; ctx.font = '11px Arial';
+        ctx.fillText('$50 ÷ 2 = free?', w*0.5, h*0.48);
+        ctx.fillStyle = '#e8922e'; ctx.font = 'bold 10px Arial'; ctx.fillText('GIRL MATH', w*0.5, h-15);
+      } else if (template.id === 'chad-vs-virgin') {
+        // Two panel: virgin left, chad right
+        ctx.fillStyle = '#1a1620'; ctx.fillRect(0, 0, w*0.5, h);
+        ctx.fillStyle = '#202020'; ctx.beginPath(); ctx.arc(w*0.25, h*0.3, 20, 0, Math.PI*2); ctx.fill();
+        ctx.fillRect(w*0.15, h*0.35, w*0.2, h*0.4);
+        ctx.fillStyle = '#16201a'; ctx.fillRect(w*0.5, 0, w*0.5, h);
+        ctx.fillStyle = '#2a2a3a'; ctx.beginPath(); ctx.arc(w*0.75, h*0.3, 25, 0, Math.PI*2); ctx.fill();
+        ctx.fillRect(w*0.62, h*0.35, w*0.26, h*0.5);
+        ctx.fillStyle = 'rgba(245,240,232,0.3)'; ctx.font = '8px Arial'; ctx.textAlign = 'center';
+        ctx.fillText('VIRGIN', w*0.25, h-15); ctx.fillText('CHAD', w*0.75, h-15);
+      } else if (template.id === 'always-has-been') {
+        // Astronaut with gun
+        ctx.fillStyle = '#0a0a2e'; ctx.fillRect(0, 0, w, h);
+        ctx.fillStyle = '#2a2a4a'; // Spacesuit body
+        ctx.beginPath(); ctx.arc(w*0.35, h*0.3, 18, 0, Math.PI*2); ctx.fill();
+        ctx.fillRect(w*0.28, h*0.35, w*0.14, h*0.4);
+        ctx.fillStyle = '#2a2a4a'; // Second astronaut head
+        ctx.beginPath(); ctx.arc(w*0.7, h*0.25, 15, 0, Math.PI*2); ctx.fill();
+        ctx.fillRect(w*0.64, h*0.3, w*0.12, h*0.15);
+        ctx.strokeStyle = '#ff4444'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(w*0.5, h*0.28); ctx.lineTo(w*0.6, h*0.25); ctx.stroke();
+        ctx.fillStyle = 'rgba(245,240,232,0.3)'; ctx.font = 'bold 9px Arial'; ctx.textAlign = 'center';
+        ctx.fillText('ALWAYS HAS BEEN', w*0.5, h-10);
+      } else if (template.id === 'boardroom') {
+        // Meeting room pointing at chart
+        ctx.fillStyle = '#1a1a10'; ctx.fillRect(0, 0, w, h);
+        // Table
+        ctx.fillStyle = '#2a2a1a'; ctx.fillRect(w*0.1, h*0.5, w*0.8, h*0.15);
+        // People heads
+        ctx.fillStyle = '#2a2a3a';
+        for (let i = 0; i < 4; i++) {
+          ctx.beginPath(); ctx.arc(w*0.18 + i*w*0.2, h*0.38, 12, 0, Math.PI*2); ctx.fill();
+        }
+        // Whiteboard
+        ctx.fillStyle = '#3a3a2a'; ctx.fillRect(w*0.7, 15, w*0.25, h*0.3);
+        ctx.strokeStyle = '#e8922e'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(w*0.7, h*0.2); ctx.lineTo(w*0.78, h*0.15); ctx.stroke();
+        ctx.fillStyle = '#e8922e'; ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center'; ctx.fillText('BOARDROOM', w*0.5, h-10);
       }
 
-      // Template name overlay
-      ctx.fillStyle = 'rgba(245,240,232,0.08)';
-      ctx.font = 'bold 14px Archivo Black, Arial';
-      ctx.fillText(template.name, w*0.5, h-12);
+      // Fallback: template name overlay
+      if (!template.id) {
+        ctx.fillStyle = 'rgba(245,240,232,0.1)'; ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
+        ctx.fillText(template.name, w*0.5, h*0.5);
+      }
     }
-
-    // ============ RENDER TEMPLATES ============
-    const templateGrid = document.getElementById('templateGrid');
 
     TEMPLATES.forEach(t => {
       const card = document.createElement('div');
@@ -766,8 +776,26 @@
 
       const preview = document.createElement('div');
       preview.className = 'template-preview';
-      const thumbCanvas = document.createElement('canvas');
-      preview.appendChild(thumbCanvas);
+
+      if (t.thumb) {
+        // Use real image
+        const img = document.createElement('img');
+        img.src = t.thumb;
+        img.alt = t.name;
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:10px';
+        img.onerror = function() {
+          // Fallback to canvas on load failure
+          const canv = document.createElement('canvas');
+          this.parentNode.replaceChild(canv, this);
+          drawTemplateThumbnail(canv, t);
+        };
+        preview.appendChild(img);
+      } else {
+        // Use canvas-drawn thumbnail
+        const thumbCanvas = document.createElement('canvas');
+        preview.appendChild(thumbCanvas);
+        setTimeout(() => drawTemplateThumbnail(thumbCanvas, t), 50);
+      }
 
       const info = document.createElement('div');
       info.className = 'template-info';
@@ -808,9 +836,6 @@
 
       card.setAttribute('onclick', `selectTemplate('${t.id}', this)`);
       templateGrid.appendChild(card);
-
-      // Render thumbnail after DOM append
-      setTimeout(() => renderThumbnail(thumbCanvas, t), 50);
     });
 
     // Auto-select first template
