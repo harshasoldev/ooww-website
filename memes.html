@@ -731,6 +731,13 @@
     let selectedColor = '#ffffff';
     let memeSize = 'standard'; // standard, wide, square
 
+    // Global template selector (used by inline onclick)
+    function selectTemplate(id, el) {
+      document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+      if (el) el.classList.add('selected');
+      selectedTemplate = id;
+    }
+
     const templateGrid = document.getElementById('templateGrid');
     
     TEMPLATES.forEach(t => {
@@ -754,14 +761,18 @@
       card.appendChild(name);
       card.appendChild(formats);
       
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        selectedTemplate = t.id;
-      });
+      card.setAttribute('onclick', `selectTemplate('${t.id}', this)`);
       
       templateGrid.appendChild(card);
     });
+
+    // Select first template by default
+    setTimeout(() => {
+      const firstCard = document.querySelector('.template-card');
+      if (firstCard) {
+        firstCard.click();
+      }
+    }, 100);
 
     // ============ COLOR PICKER ============
     document.querySelectorAll('.color-option').forEach(el => {
@@ -1199,11 +1210,17 @@
       const bottomText = document.getElementById('bottomText').value || '';
       
       if (!selectedTemplate) {
-        generateBtn.style.background = 'linear-gradient(135deg, #ff4444, #cc3333)';
-        setTimeout(() => {
-          generateBtn.style.background = 'linear-gradient(135deg, #e8922e, #ff6b35)';
-        }, 1500);
-        return;
+        // Auto-select first template if none selected
+        const firstCard = document.querySelector('.template-card');
+        if (firstCard) {
+          firstCard.click();
+        } else {
+          generateBtn.style.background = 'linear-gradient(135deg, #ff4444, #cc3333)';
+          setTimeout(() => {
+            generateBtn.style.background = 'linear-gradient(135deg, #e8922e, #ff6b35)';
+          }, 1500);
+          return;
+        }
       }
 
       // Set canvas size
